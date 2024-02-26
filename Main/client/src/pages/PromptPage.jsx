@@ -33,6 +33,7 @@ const PromptPage = ({ onSubmit }) => {
         } catch (error) {
             console.error('Error generating image:', error);
         }
+
     };
   
     return (
@@ -97,6 +98,7 @@ const PromptPage = ({ onSubmit }) => {
                     <img src={imageUrl} alt="Generated Character" className="img-fluid" />
                 </div>
             )}
+
         </div>
     );
 };
