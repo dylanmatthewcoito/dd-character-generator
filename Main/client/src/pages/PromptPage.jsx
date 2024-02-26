@@ -5,10 +5,34 @@ const PromptPage = ({ onSubmit }) => {
     const [race, setRace] = useState('');
     const [charClass, setCharClass] = useState('');
     const [backstory, setBackstory] = useState('');
-  
-    const handleSubmit = (event) => {
-      event.preventDefault(); // Prevents the default form submit action
-      onSubmit({ name, race, charClass, backstory }); // Sends the state variables
+    const [imageUrl, setImageUrl] = useState(''); // State to store the generated image URL
+
+    const handleSubmit = async (event) => {
+        event.preventDefault(); // Prevents the default form submit action
+
+        // Prepare the data to be sent to the backend
+        const formData = { name, race, charClass, backstory };
+
+        try {
+            const response = await fetch('http://localhost:3001/api/generate-image', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            });
+            const data = await response.json();
+            console.log(data)
+
+            if (response.ok) {
+                // Update the state with the image URL to display the image
+                setImageUrl(data.imageUrl);
+            } else {
+                throw new Error('Failed to generate image');
+            }
+        } catch (error) {
+            console.error('Error generating image:', error);
+        }
     };
   
     return (
@@ -68,6 +92,11 @@ const PromptPage = ({ onSubmit }) => {
                 <button type="submit" className="btn btn-secondary">Generate Image</button>
             </div>
             </form>
+            {imageUrl && (
+                <div className="text-center mt-4">
+                    <img src={imageUrl} alt="Generated Character" className="img-fluid" />
+                </div>
+            )}
         </div>
     );
 };
