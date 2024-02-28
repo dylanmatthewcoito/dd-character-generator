@@ -4,7 +4,6 @@ const { expressMiddleware } = require('@apollo/server/express4');
 const path = require('path');
 const imageRoutes = require('./routes/openaiRoutes');
 const cors = require('cors');
-require('dotenv').config();
 
 const { typeDefs, resolvers } = require('./schemas');
 const db = require('./config/connection');
