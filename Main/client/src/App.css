@@ -1,0 +1,19 @@
+#root {
+    font-family: "MedievalSharp", cursive;
+    font-weight: 500;
+    font-style: normal;
+}
+.navbar {
+    background-color:rgb(202, 180, 162) ;
+}
+
+
+.body-background {
+    background-image: url('./src/assets/images/another-rough-old-and-worn-parchment-paper.webp'); /* Replace with the path to your image */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-attachment: fixed; /* Fix the background image's position */
+    background-size: cover; /* Cover the entire area */
+    min-height: 100vh;
+}
+

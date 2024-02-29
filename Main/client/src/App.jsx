@@ -2,8 +2,8 @@ import React from 'react';
 import './App.css';
 import { Outlet } from 'react-router-dom';
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
-import PromptPage from './pages/PromptPage';
-import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
+import Navbar from './components/Navbar';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const client = new ApolloClient({
   uri: '/graphql',
@@ -11,18 +11,14 @@ const client = new ApolloClient({
 });
 
 function App() {
-  const handleFormSubmit = (formData) => {
-    // Here is where we handle the submission of the form data,
-    // for example, sending the data to GraphQL server.
-    console.log('Character Data:', formData);
-  };
-
+  // No need for Router here anymore, just provide the ApolloProvider
   return (
     <ApolloProvider client={client}>
       <div>
-        <PromptPage onSubmit={handleFormSubmit} />
+      <Navbar />
+        {/* Content of App, perhaps some layout components */}
+        <Outlet /> {/* This is where child routes will render */}
       </div>
-      <Outlet />
     </ApolloProvider>
   );
 }
