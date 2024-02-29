@@ -1,8 +1,6 @@
 require('dotenv').config();
 const express = require('express');
 const  OpenAIApi  = require("openai")
-console.log('API Key:', process.env.OPENAI_API_KEY);
-
 const router = express.Router();
 const openai = new OpenAIApi({
     apiKey: process.env.OPENAI_API_KEY
@@ -11,7 +9,7 @@ const openai = new OpenAIApi({
 
 router.post('/', async (req, res) => {
   const { name, race, charClass, backstory } = req.body;
-  const prompt = `A Dungeons and Dragons character named ${name}, who has a race of ${race}, a class of ${charClass}, and their backstory is: ${backstory}. Please Make sure to not include any text elements in the image.`;
+  const prompt = `A Dungeons and Dragons themed character named ${name}, who has a race of ${race}, a class of ${charClass}, and their backstory/description is: ${backstory}.`;
   console.log(req.body)
   try {
     const response = await openai.images.generate({ 

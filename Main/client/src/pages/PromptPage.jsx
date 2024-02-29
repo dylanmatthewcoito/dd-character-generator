@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 
 const PromptPage = ({ onSubmit }) => {
     const [name, setName] = useState('');
@@ -6,12 +8,26 @@ const PromptPage = ({ onSubmit }) => {
     const [charClass, setCharClass] = useState('');
     const [backstory, setBackstory] = useState('');
     const [imageUrl, setImageUrl] = useState(''); // State to store the generated image URL
+    const navigate = useNavigate();
 
     const handleSubmit = async (event) => {
         event.preventDefault(); // Prevents the default form submit action
 
         // Prepare the data to be sent to the backend
         const formData = { name, race, charClass, backstory };
+
+        //Once we deploy to render we will hardcode our url string into an env file but for testing purposes localhost will work just fine
+        //Commented out below is what that might look like
+
+        /*  
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/api/generate-image`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData),
+        });
+        */
 
         try {
             const response = await fetch('http://localhost:3001/api/generate-image', {
@@ -24,13 +40,14 @@ const PromptPage = ({ onSubmit }) => {
             const data = await response.json();
             console.log(data)
 
-            if (response.ok) {
-                // Update the state with the image URL to display the image
-                setImageUrl(data.imageUrl);
-            } else {
+        if (response.ok) {
+            // Navigate to CharSheetPage with state
+            navigate('/charsheet', { state: { ...data, name, race, charClass, backstory } });
+        } 
+        else {
                 throw new Error('Failed to generate image');
-            }
-        } catch (error) {
+        }} 
+        catch (error) {
             console.error('Error generating image:', error);
         }
 
@@ -38,13 +55,9 @@ const PromptPage = ({ onSubmit }) => {
   
     return (
 
-        <div>
-            <header className="bg-secondary text-white text-center p-5 mb-4">
-                <div className="container">
-                    <h1 className="charCreateHeader">Create Your Character</h1>
-                </div>
-            </header>
-            <form onSubmit={handleSubmit} className="container mt-5">
+        <div className='body-background pt-5'>
+         
+            <form onSubmit={handleSubmit} className="container">
             <div className="mb-3">
                 <label htmlFor="name" className="form-label">Name:</label>
                 <input
@@ -79,7 +92,7 @@ const PromptPage = ({ onSubmit }) => {
                 />
             </div>
             <div className="mb-3">
-                <label htmlFor="backstory" className="form-label">Backstory:</label>
+                <label htmlFor="backstory" className="form-label">Description:</label>
                 <textarea
                 id="backstory"
                 className="form-control"
