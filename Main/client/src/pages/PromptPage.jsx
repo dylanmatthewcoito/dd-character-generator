@@ -78,7 +78,7 @@ const PromptPage = ({ onSubmit }) => {
             {isLoading ? (
            <div className="d-flex justify-content-center align-items-center" style={{ height: '100vh' }}>
            <div className="spinner-border custom-spinner" role="status">
-             <span className="visually-hidden">Loading...</span>
+             <span className="visually-hidden">Loading</span>
            </div>
            <span className="ms-3 loading-indicator">Loading...</span>
          </div>
@@ -119,18 +119,18 @@ const PromptPage = ({ onSubmit }) => {
                 />
             </div>
             <div className="mb-3">
-                <label htmlFor="backstory" className="form-label">Description:</label>
+                <label htmlFor="backstory" className="form-label">Description/Backstory:</label>
                 <textarea
                 id="backstory"
                 className="form-control"
-                rows="3"
+                rows="5"
                 value={backstory}
                 onChange={(e) => setBackstory(e.target.value)}
                 required
                 />
             </div>
             <div className="d-flex justify-content-center">
-                <button type="submit" className="btn btn-secondary">Generate Image</button>
+                <button type="submit" className="btn btn-dark">Generate Character</button>
             </div>
             </form>
             )}
