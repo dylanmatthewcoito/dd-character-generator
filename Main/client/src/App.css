@@ -16,4 +16,8 @@
     background-size: cover; /* Cover the entire area */
     min-height: 100vh;
 }
+  .loading-indicator {
+    font-size: 5vh;
+  }
 
+  
