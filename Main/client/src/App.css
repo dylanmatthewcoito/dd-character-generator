@@ -1,10 +1,20 @@
 #root {
+    padding-top: 80px;
     font-family: "MedievalSharp", cursive;
     font-weight: 500;
     font-style: normal;
 }
 .navbar {
-    background-color:rgb(202, 180, 162) ;
+    background-color:rgb(0, 0, 0) ;
+}
+.navbar-brand {
+    color: red;
+    font-size: clamp(1.5rem, 5vw, 2rem);
+}
+
+.navbar-brand:hover {
+    color: rgb(255, 98, 98);
+    font-size: clamp(1.5rem, 5vw, 2rem);
 }
 
 
@@ -16,8 +26,21 @@
     background-size: cover; /* Cover the entire area */
     min-height: 100vh;
 }
-  .loading-indicator {
-    font-size: 5vh;
-  }
 
+.loading-indicator {
+    font-size: 5vh;
+}
+
+.form-control {
+    background-color: rgba(240, 240, 240, 0.411);
+    border-color: black;
+}
   
+.bolded {
+    font-size: 2vh;
+    font-weight: 600;
+}
+
+.char-name {
+    font-weight: 600;
+}

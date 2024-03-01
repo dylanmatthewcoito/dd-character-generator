@@ -16,10 +16,10 @@ const CharSheetPage = () => {
           </div>
           <div className="col-lg-8 col-md-6 mt-5">
             <div className="character-sheet">
-              <h1 className="display-4">{name}</h1>
-              <p className="lead">Race: {race}</p>
-              <p className="lead">Class: {charClass}</p>
-              <p className="lead">Description: {backstory}</p>
+              <h1 className="display-4 char-name">{name}</h1>
+              <p className="lead"><span className='bolded'>Race: </span>{race}</p>
+              <p className="lead"><span className='bolded'>Class: </span>{charClass}</p>
+              <p className="lead"><span className='bolded'>Description: </span>{charClass}{backstory}</p>
               {/* ...additional character sheet details... */}
             </div>
           </div>
