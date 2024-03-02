@@ -1,25 +1,26 @@
-const typeDefs = `
-  type Tech {
-    _id: ID!
-    name: String!
-  }
 
-  type Matchup {
+const typeDefs = `
+type Character {
+  name: String!
+  className: String!
+  race: String!
+  backstory: String!
+  image: String!
+}
+
+  type User {
     _id: ID!
-    tech1: String!
-    tech2: String!
-    tech1_votes: Int
-    tech2_votes: Int
+    username: String!
+    password: String!
+    character: Character
   }
 
   type Query {
-    tech: [Tech]
-    matchups(_id: String): [Matchup]
+    getUserByUsername(username: String!): User
   }
 
   type Mutation {
-    createMatchup(tech1: String!, tech2: String!): Matchup
-    createVote(_id: String!, techNum: Int!): Matchup
+    createUser(username: String!, password: String!): User
   }
 `;
 

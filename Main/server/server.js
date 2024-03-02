@@ -8,6 +8,7 @@ const cors = require('cors');
 const { typeDefs, resolvers } = require('./schemas');
 const db = require('./config/connection');
 
+
 const PORT = process.env.PORT || 3001;
 const app = express();
 const server = new ApolloServer({
@@ -33,7 +34,10 @@ const startApolloServer = async () => {
     });
   } 
 
+
+  db.on('error', console.error.bind(console, 'MongoDB connection error:'));
   db.once('open', () => {
+    console.log('Connected to the database');
     app.listen(PORT, () => {
       console.log(`API server running on port ${PORT}!`);
       console.log(`Use GraphQL at http://localhost:${PORT}/graphql`);

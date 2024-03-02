@@ -3,8 +3,8 @@ const express = require('express');
 const  OpenAIApi  = require("openai")
 const router = express.Router();
 const openai = new OpenAIApi({
-    apiKey: process.env.OPENAI_API_KEY
-    ,
+  apiKey: process.env.OPENAI_API_KEY
+  ,
 });
 
 router.post('/', async (req, res) => {
