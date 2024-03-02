@@ -2,7 +2,7 @@
 const typeDefs = `
 type Character {
   name: String!
-  className: String!
+  charClass: String!
   race: String!
   backstory: String!
   image: String!
