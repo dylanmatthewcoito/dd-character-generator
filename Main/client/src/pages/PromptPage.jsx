@@ -8,15 +8,50 @@ const PromptPage = ({ onSubmit }) => {
     const [charClass, setCharClass] = useState('');
     const [backstory, setBackstory] = useState('');
     const [imageUrl, setImageUrl] = useState(''); // State to store the generated image URL
-    const [isLoading, setIsLoading] = useState(false); // State to manage loading
+    const [isLoading, setIsLoading] = useState(false);// State to manage loading
+
+    const [stats, setAllocatedStats] = useState({
+        strength: 0,
+        dexterity: 0,
+        constitution: 0,
+        intelligence: 0,
+        wisdom: 0,
+        charisma: 0
+    });
+    const [totalPoints, setTotalPoints] = useState(30);
+
     const navigate = useNavigate();
+
+    const handleAddStat = (event, stat) => {
+        event.preventDefault();
+        if (totalPoints > 0) {
+            setAllocatedStats(prevStats => ({
+                ...prevStats,
+                [stat]: prevStats[stat] + 1
+            }));
+            setTotalPoints(prevPoints => prevPoints - 1);
+        }
+    };
+
+    const handleRemoveStat = (event, stat) => {
+        event.preventDefault();
+        if (stats[stat] > 0) {
+            setAllocatedStats(prevStats => ({
+                ...prevStats,
+                [stat]: prevStats[stat] - 1
+            }));
+            setTotalPoints(prevPoints => prevPoints + 1);
+        }
+    };
+
+
 
     const handleSubmit = async (event) => {
         event.preventDefault(); // Prevents the default form submit action
         setIsLoading(true); // Start loading
 
         // Prepare the data to be sent to the backend
-        const formData = { name, race, charClass, backstory };
+        const formData = { name, race, charClass, backstory, stats };
 
         //Once we deploy to render we will hardcode our url string into an env file but for testing purposes localhost will work just fine
         //Commented out below is what that might look like
@@ -129,6 +164,23 @@ const PromptPage = ({ onSubmit }) => {
                 required
                 />
             </div>
+
+            <div className="mb-3">
+                <h3>Allocate Stats</h3>
+                <div>
+                    <p>Total Points Remaining: {totalPoints}</p>
+                    {Object.keys(stats).map(stat => (
+                        <div key={stat}>
+                            <span>{stat}: {stats[stat]}</span>
+                            <button onClick={(e) => handleAddStat(e, stat)}>+</button>
+                            <button onClick={(e) => handleRemoveStat(e, stat)}>-</button>
+                        </div>
+                    ))}
+                </div>
+            </div>
+
+
+
             <div className="d-flex justify-content-center">
                 <button type="submit" className="btn btn-dark">Generate Character</button>
             </div>
