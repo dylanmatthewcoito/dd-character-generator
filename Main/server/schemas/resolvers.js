@@ -1,4 +1,6 @@
 const User = require('../models/User');
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs');
 
 const resolvers = {
     Query: {
@@ -35,6 +37,21 @@ const resolvers = {
         } catch (error) {
           throw new Error(error.message);
         }
+      },
+      login: async (_, { username, password }) => {
+        const user = await User.findOne({ username });
+        if (!user) {
+          throw new Error('User not found');
+        }
+      
+        const isMatch = await bcrypt.compare(password, user.password);
+        if (!isMatch) {
+          throw new Error('Invalid credentials');
+        }
+      
+        const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+      
+        return { token, user };
       },
     },
   };

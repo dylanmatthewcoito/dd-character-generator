@@ -19,7 +19,7 @@ const CharSheetPage = () => {
               <h1 className="display-4 char-name">{name}</h1>
               <p className="lead"><span className='bolded'>Race: </span>{race}</p>
               <p className="lead"><span className='bolded'>Class: </span>{charClass}</p>
-              <p className="lead"><span className='bolded'>Description: </span>{charClass}{backstory}</p>
+              <p className="lead"><span className='bolded'>Description: </span>{backstory}</p>
               {/* ...additional character sheet details... */}
             </div>
           </div>

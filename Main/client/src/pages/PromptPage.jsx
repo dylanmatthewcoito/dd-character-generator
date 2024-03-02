@@ -61,7 +61,7 @@ const PromptPage = ({ onSubmit }) => {
         if (response.ok) {
             setImageUrl(data.imageUrl); 
             // Navigate to CharSheetPage with state
-            navigate('/charsheet', { state: { ...data, name, race, charClass, backstory } });
+            navigate('/app/charsheet', { state: { ...data, name, race, charClass, backstory } });
         } 
         else {
                 throw new Error('Failed to generate image');
