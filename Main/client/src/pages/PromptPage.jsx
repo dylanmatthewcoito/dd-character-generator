@@ -11,12 +11,12 @@ const PromptPage = ({ onSubmit }) => {
     const [isLoading, setIsLoading] = useState(false);// State to manage loading
 
     const [stats, setAllocatedStats] = useState({
-        strength: 0,
-        dexterity: 0,
-        constitution: 0,
-        intelligence: 0,
-        wisdom: 0,
-        charisma: 0
+        Strength: 0,
+        Dexterity: 0,
+        Constitution: 0,
+        Intelligence: 0,
+        Wisdom: 0,
+        Charisma: 0
     });
     const [totalPoints, setTotalPoints] = useState(30);
 
@@ -96,9 +96,8 @@ const PromptPage = ({ onSubmit }) => {
         if (response.ok) {
             setImageUrl(data.imageUrl); 
             // Navigate to CharSheetPage with state
-            navigate('/charsheet', 
-            { state: { ...data, name, race, charClass, backstory, stats } }
-            );
+            navigate('/app/charsheet', { state: { ...data, name, race, charClass, backstory, stats } });
+
         } 
         else {
                 throw new Error('Failed to generate image');
@@ -174,8 +173,8 @@ const PromptPage = ({ onSubmit }) => {
                     {Object.keys(stats).map(stat => (
                         <div key={stat}>
                             <span>{stat}: {stats[stat]}</span>
-                            <button onClick={(e) => handleAddStat(e, stat)}>+</button>
                             <button onClick={(e) => handleRemoveStat(e, stat)}>-</button>
+                            <button onClick={(e) => handleAddStat(e, stat)}>+</button>
                         </div>
                     ))}
                 </div>

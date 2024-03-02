@@ -25,6 +25,11 @@ type Stats {
     character: Character
   }
 
+  type LoginResponse {
+    token: String!
+    user: User!
+  }
+
   type Query {
     getUserByUsername(username: String!): User
     stats: [Stats]
@@ -32,6 +37,7 @@ type Stats {
 
   type Mutation {
     createUser(username: String!, password: String!): User
+    login(username: String!, password: String!): LoginResponse
   }
 `;
 

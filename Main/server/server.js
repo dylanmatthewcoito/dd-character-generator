@@ -8,12 +8,22 @@ const cors = require('cors');
 const { typeDefs, resolvers } = require('./schemas');
 const db = require('./config/connection');
 
-
 const PORT = process.env.PORT || 3001;
 const app = express();
 const server = new ApolloServer({
   typeDefs,
   resolvers,
+  context: ({ req }) => {
+    const token = req.headers.authorization || '';
+    if (token) {
+      try {
+        const user = jwt.verify(token, process.env.JWT_SECRET);
+        return { user };
+      } catch (e) {
+        throw new Error('Your session expired. Sign in again.');
+      }
+    }
+  },
 });
 
 const startApolloServer = async () => {
