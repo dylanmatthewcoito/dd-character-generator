@@ -8,6 +8,16 @@ type Character {
   image: String!
 }
 
+type Stats {
+  _id: ID
+  strength: Int!
+  dexterity: Int!
+  constitution: Int!
+  intelligence: Int!
+  wisdom: Int!
+  charisma: Int!
+}
+
   type User {
     _id: ID!
     username: String!
@@ -17,6 +27,7 @@ type Character {
 
   type Query {
     getUserByUsername(username: String!): User
+    stats: [Stats]
   }
 
   type Mutation {
