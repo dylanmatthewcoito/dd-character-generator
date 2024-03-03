@@ -10,11 +10,11 @@ const PromptPage = ({ onSubmit }) => {
     const [imageUrl, setImageUrl] = useState(''); // State to store the generated image URL
     const [isLoading, setIsLoading] = useState(false);// State to manage loading
 
-    const [stats, setAllocatedStats] = useState({
+    const [Stats, setAllocatedStats] = useState({
         strength: 0,
         dexterity: 0,
         constitution: 0,
-        intelligence: 0,
+        intelegence: 0,
         wisdom: 0,
         charisma: 0
     });
@@ -35,7 +35,7 @@ const PromptPage = ({ onSubmit }) => {
 
     const handleRemoveStat = (event, stat) => {
         event.preventDefault();
-        if (stats[stat] > 0) {
+        if (Stats[stat] > 0) {
             setAllocatedStats(prevStats => ({
                 ...prevStats,
                 [stat]: prevStats[stat] - 1
@@ -51,7 +51,18 @@ const PromptPage = ({ onSubmit }) => {
         setIsLoading(true); // Start loading
 
         // Prepare the data to be sent to the backend
-        const formData = { name, race, charClass, backstory, stats };
+        const formData = { 
+            name,
+            race,
+            charClass,
+            backstory,
+            strength: Stats.strength,
+            dexterity: Stats.dexterity,
+            constitution: Stats.constitution,
+            intelegence: Stats.intelegence,
+            wisdom: Stats.wisdom,
+            charisma: Stats.charisma
+         };
 
         //Once we deploy to render we will hardcode our url string into an env file but for testing purposes localhost will work just fine
         //Commented out below is what that might look like
@@ -97,7 +108,7 @@ const PromptPage = ({ onSubmit }) => {
             setImageUrl(data.imageUrl); 
             // Navigate to CharSheetPage with state
             navigate('/charsheet', 
-            { state: { ...data, name, race, charClass, backstory, stats } }
+            { state: { ...data, name, race, charClass, backstory, Stats } }
             );
         } 
         else {
@@ -171,9 +182,9 @@ const PromptPage = ({ onSubmit }) => {
                 <h3>Allocate Stats</h3>
                 <div>
                     <p>Total Points Remaining: {totalPoints}</p>
-                    {Object.keys(stats).map(stat => (
+                    {Object.keys(Stats).map(stat => (
                         <div key={stat}>
-                            <span>{stat}: {stats[stat]}</span>
+                            <span>{stat}: {Stats[stat]}</span>
                             <button onClick={(e) => handleAddStat(e, stat)}>+</button>
                             <button onClick={(e) => handleRemoveStat(e, stat)}>-</button>
                         </div>
