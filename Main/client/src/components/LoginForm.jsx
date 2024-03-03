@@ -4,10 +4,10 @@ function LoginForm() {
     return (
         <form>
              <div className="mb-3">
-                <label htmlFor="userName" className="form-label">Email</label>
+                <label htmlFor="email" className="form-label">Email</label>
                 <input
-                id="userName"
-                type="text"
+                id="login-email"
+                type="email"
                 className="form-control"
                 required
                 />

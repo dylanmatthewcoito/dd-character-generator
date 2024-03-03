@@ -17,7 +17,7 @@ const resolvers = {
         },
         },
     Mutation: {
-      createUser: async (_, { username, password }) => {
+      createUser: async (_, { username, email, password }) => {
         try {
           // Check if the username already exists
           const existingUser = await User.findOne({ username });
@@ -28,7 +28,8 @@ const resolvers = {
           // Create a new user
           const newUser = new User({
             username,
-            password,
+            email,
+            password
           });
           // Save the new user to the database
           const savedUser = await newUser.save();
