@@ -23,6 +23,7 @@ type Stat {
     _id: ID!
     username: String!
     password: String!
+    email: String!
     character: Character
   }
 
@@ -33,7 +34,7 @@ type Stat {
 
   type Query {
     getUserByUsername(username: String!): User
-    Stat: [Stat]
+    character: [Character]
   }
 
   type Mutation {

@@ -8,21 +8,27 @@ import CharSheetPage from './pages/CharSheetPage';
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <AuthPage />, // Set AuthPage as the root route
-  },
-  {
-    path: '/app',
-    element: <App />,
+    element: <App />, // App is now the root element for all routes
     children: [
+      // AuthPage is now a child route of App
       {
-        path: 'prompt',
-        element: <PromptPage />,
+        index: true,
+        element: <AuthPage />,
       },
       {
-        path: 'charsheet',
-        element: <CharSheetPage />,
+        path: 'app',
+        children: [
+          {
+            path: 'prompt',
+            element: <PromptPage />,
+          },
+          {
+            path: 'charsheet',
+            element: <CharSheetPage />,
+          },
+          // other routes as needed
+        ],
       },
-      // other routes as needed
     ],
   },
   // More routes or redirects

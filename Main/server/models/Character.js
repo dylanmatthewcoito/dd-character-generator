@@ -6,7 +6,7 @@ const characterSchema = new mongoose.Schema({
   race: { type: String, required: true },
   backstory: { type: String, required: true },
   image: { type: String, required: true },
-  stats: { type: mongoose.Schema.Types.ObjectId, ref: 'Stats' },
+  stat: { type: mongoose.Schema.Types.ObjectId, ref: 'Stat' },
 });
 
 const Character = mongoose.model('Character', characterSchema);
