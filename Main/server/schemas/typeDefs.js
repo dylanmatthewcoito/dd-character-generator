@@ -26,7 +26,10 @@ type Stat {
     email: String!
     character: Character
   }
-
+  type AuthPayload {
+    token: String!
+    user: User!
+  }
   type LoginResponse {
     token: String!
     user: User!
@@ -38,7 +41,7 @@ type Stat {
   }
 
   type Mutation {
-    createUser(username: String!, password: String!): User
+    createUser(username: String!, email: String! password: String!): User
     login(username: String!, password: String!): LoginResponse
   }
 `;

@@ -45,7 +45,7 @@ body{
     font-weight: 600;
 }
 
-.allocate-stats {
+.allocate-stats, .h2 {
     font-size: 3vh;
     font-weight: 600;
 }
@@ -61,5 +61,10 @@ body{
 .prompt-stats {
     font-size: 1.7vh;
 }
+
+.h2 {
+    margin-bottom: 3vh;
+}
+
 
 /* Start https://www.cursors-4u.com */ * {cursor: url(https://cur.cursors-4u.net/sports/spo-1/spo15.cur), auto !important;} /* End https://www.cursors-4u.com */
