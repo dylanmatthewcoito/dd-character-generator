@@ -11,12 +11,12 @@ const PromptPage = ({ onSubmit }) => {
     const [isLoading, setIsLoading] = useState(false);// State to manage loading
 
     const [Stats, setAllocatedStats] = useState({
-        strength: 0,
-        dexterity: 0,
-        constitution: 0,
-        intelegence: 0,
-        wisdom: 0,
-        charisma: 0
+        Strength: 0,
+        Dexterity: 0,
+        Constitution: 0,
+        Intelegence: 0,
+        Wisdom: 0,
+        Charisma: 0
 
     });
     const [totalPoints, setTotalPoints] = useState(30);
@@ -57,12 +57,12 @@ const PromptPage = ({ onSubmit }) => {
             race,
             charClass,
             backstory,
-            strength: Stats.strength,
-            dexterity: Stats.dexterity,
-            constitution: Stats.constitution,
-            intelegence: Stats.intelegence,
-            wisdom: Stats.wisdom,
-            charisma: Stats.charisma
+            strength: Stats.Strength,
+            dexterity: Stats.Dexterity,
+            constitution: Stats.Constitution,
+            intelegence: Stats.Intelegence,
+            wisdom: Stats.Wisdom,
+            charisma: Stats.Charisma
          };
 
         //Once we deploy to render we will hardcode our url string into an env file but for testing purposes localhost will work just fine
@@ -136,7 +136,7 @@ const PromptPage = ({ onSubmit }) => {
             ) : (
          
             <form onSubmit={handleSubmit} className="container">
-            <div className="mb-3">
+            <div className="mb-1">
                 <label htmlFor="name" className="form-label">Name:</label>
                 <input
                 id="name"
@@ -147,7 +147,7 @@ const PromptPage = ({ onSubmit }) => {
                 required
                 />
             </div>
-            <div className="mb-3">
+            <div className="mb-1">
                 <label htmlFor="race" className="form-label">Race:</label>
                 <input
                 id="race"
@@ -158,7 +158,7 @@ const PromptPage = ({ onSubmit }) => {
                 required
                 />
             </div>
-            <div className="mb-3">
+            <div className="mb-1">
                 <label htmlFor="class" className="form-label">Class:</label>
                 <input
                 id="class"
@@ -182,16 +182,14 @@ const PromptPage = ({ onSubmit }) => {
             </div>
 
             <div className="mb-3">
-                <h3>Allocate Stats</h3>
+                <h2 className='allocate-stats'>Allocate Stats</h2>
                 <div>
-                    <p>Total Points Remaining: {totalPoints}</p>
+                    <p className='total-points-line'>Total Points Remaining: <span className='bolded'>{totalPoints}</span></p>
                     {Object.keys(Stats).map(stat => (
                         <div key={stat}>
-                            <span>{stat}: {Stats[stat]}</span>
-                            <button onClick={(e) => handleAddStat(e, stat)}>+</button>
-
-                            <button onClick={(e) => handleRemoveStat(e, stat)}>-</button>
-                            <button onClick={(e) => handleAddStat(e, stat)}>+</button>
+                            <button className='btn btn-dark m-1' onClick={(e) => handleRemoveStat(e, stat)}>-</button>
+                            <button className='btn btn-dark m-1' onClick={(e) => handleAddStat(e, stat)}>+</button>
+                            <span className='prompt-stats'>{stat}: <span className='bolded'>{Stats[stat]}</span></span>
                         </div>
                     ))}
                 </div>
