@@ -6,14 +6,15 @@ type Character {
   race: String!
   backstory: String!
   image: String!
+  stat: Stat
 }
 
-type Stats {
+type Stat {
   _id: ID
   strength: Int!
   dexterity: Int!
   constitution: Int!
-  intelligence: Int!
+  intelegence: Int!
   wisdom: Int!
   charisma: Int!
 }
@@ -32,7 +33,7 @@ type Stats {
 
   type Query {
     getUserByUsername(username: String!): User
-    stats: [Stats]
+    Stat: [Stat]
   }
 
   type Mutation {

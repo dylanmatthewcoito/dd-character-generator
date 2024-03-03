@@ -6,9 +6,11 @@ const openai = new OpenAIApi({
   apiKey: process.env.OPENAI_API_KEY,
 });
 const Character = require('../models/Character');
+const Stat = require('../models/Stat');
 
 router.post('/', async (req, res) => {
-  const { name, race, charClass, backstory } = req.body;
+  const { name, race, charClass, backstory, ...Stats } = req.body;
+  console.log(Stats, "stats should be here")
   const prompt = `A Dungeons and Dragons themed character named ${name}, who has a race of ${race}, a class of ${charClass}, and their backstory/description is: ${backstory}.`;
 
   try {
@@ -28,10 +30,21 @@ router.post('/', async (req, res) => {
       race,
       charClass,
       backstory,
-      image: imageUrl
+      image: imageUrl,
     });
 
+    // Save stats data to MongoDB
+    const newStat = new Stat({
+      strength: Stats.strength,
+      dexterity: Stats.dexterity,
+      constitution: Stats.constitution,
+      intelegence: Stats.intelegence,
+      wisdom: Stats.wisdom,
+      charisma: Stats.charisma
+    })
+
     await newCharacter.save();
+    await newStat.save();
 
     res.json({ imageUrl: imageUrl });
   } catch (error) {

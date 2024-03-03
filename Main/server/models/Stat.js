@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const statsSchema = new mongoose.Schema({
+const statSchema = new mongoose.Schema({
     strength: {
         type: Number,
         required: true
@@ -27,6 +27,6 @@ const statsSchema = new mongoose.Schema({
     }
 })
 
-const Stats = mongoose.model('Stats', statsSchema);
+const Stat = mongoose.model('Stat', statSchema);
 
-module.exports = Stats;
+module.exports = Stat;
