@@ -43,9 +43,9 @@ const SignupForm = () => {
     return (
         <form onSubmit={handleSubmit}>
             <div className="mb-3">
-                <label htmlFor="userName" className="form-label">Username</label>
+                <label htmlFor="signup-username" className="form-label">Username</label>
                 <input
-                    id="userName"
+                    id="signup-username"
                     type="text"
                     className="form-control"
                     required
@@ -54,9 +54,9 @@ const SignupForm = () => {
                 />
             </div>
             <div className="mb-3">
-                <label htmlFor="email" className="form-label">Email</label>
+                <label htmlFor="signup-email" className="form-label">Email</label>
                 <input
-                    id="email"
+                    id="signup-email"
                     type="email"
                     className="form-control"
                     required
@@ -65,9 +65,9 @@ const SignupForm = () => {
                 />
             </div>
             <div className="mb-3">
-                <label htmlFor="signuppassword" className="form-label">Password</label>
+                <label htmlFor="signup-password" className="form-label">Password</label>
                 <input
-                    id="signuppassword"
+                    id="signup-password"
                     type="password"
                     className="form-control"
                     required

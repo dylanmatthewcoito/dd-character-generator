@@ -22,12 +22,7 @@ function AuthPage() {
 
     return (
         <div className="auth-container container py-5">
-            <nav className="navbar py-4 fixed-top">
-            <div className="container">
-                <div className="navbar-brand">D&D Character Generator</div>
-            </div>
-            </nav>
-            <h2>{isLoginMode ? 'Login' : 'Sign up'}</h2>
+            <h2 className='h2'>{isLoginMode ? 'Login' : 'Sign up'}</h2>
             {isLoginMode
                 ? <LoginForm onLoginSuccess={handleLoginSuccess} />
                 : <SignupForm onSignupSuccess={handleSignupSuccess} />}

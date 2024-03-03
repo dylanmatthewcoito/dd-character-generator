@@ -39,8 +39,8 @@ const resolvers = {
           throw new Error(error.message);
         }
       },
-      login: async (_, { username, password }) => {
-        const user = await User.findOne({ username });
+      login: async (_, { email, password }) => {
+        const user = await User.findOne({ email });
         if (!user) {
           throw new Error('User not found');
         }
