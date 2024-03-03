@@ -19,6 +19,8 @@ router.post('/', async (req, res) => {
       model: "dall-e-3",
       prompt: prompt
     });
+    console.log(req.body)
+    console.log(response)
 
     const imageUrl = response.data[0].url;
 

@@ -17,6 +17,7 @@ const PromptPage = ({ onSubmit }) => {
         intelegence: 0,
         wisdom: 0,
         charisma: 0
+
     });
     const [totalPoints, setTotalPoints] = useState(30);
 
@@ -107,9 +108,11 @@ const PromptPage = ({ onSubmit }) => {
         if (response.ok) {
             setImageUrl(data.imageUrl); 
             // Navigate to CharSheetPage with state
-            navigate('/charsheet', 
+
+            navigate('/app/charsheet', 
             { state: { ...data, name, race, charClass, backstory, Stats } }
             );
+
         } 
         else {
                 throw new Error('Failed to generate image');
@@ -186,7 +189,9 @@ const PromptPage = ({ onSubmit }) => {
                         <div key={stat}>
                             <span>{stat}: {Stats[stat]}</span>
                             <button onClick={(e) => handleAddStat(e, stat)}>+</button>
+
                             <button onClick={(e) => handleRemoveStat(e, stat)}>-</button>
+                            <button onClick={(e) => handleAddStat(e, stat)}>+</button>
                         </div>
                     ))}
                 </div>
