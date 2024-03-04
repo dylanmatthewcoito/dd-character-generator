@@ -1,6 +1,7 @@
 const User = require('../models/User');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
+const Character = require('../models/Character');
 
 const resolvers = {
     Query: {
@@ -15,8 +16,43 @@ const resolvers = {
             throw new Error(`Error fetching user by username: ${error.message}`);
           }
         },
+        getUserCharacters: async (_, { username }) => {
+          try {
+            const user = await User.findOne({ username }).populate('characters');
+            if (!user) {
+              throw new Error('User not found');
+            }
+            return user.characters;
+          } catch (error) {
+            throw new Error(`Error fetching characters for user: ${error.message}`);
+          }
+        },
         },
     Mutation: {
+      createCharacter: async (_, { username, characterInput }) => {
+        try {
+          const user = await User.findOne({ username });
+          if (!user) {
+            throw new Error('User not found');
+          }
+          // Create a new character associated with the user
+          const newCharacter = new Character({
+            ...characterInput,
+            stat: characterInput.stat,
+            user: user._id, // Associate the character with the user
+          });
+          
+          console.log(Character)
+          // Save the new character to the database
+          const savedCharacter = await newCharacter.save();
+  
+          return savedCharacter;
+        } catch (error) {
+          throw new Error(`Error creating character: ${error.message}`);
+        }
+      },
+
+
       createUser: async (_, { username, email, password }) => {
         try {
           // Check if the username already exists

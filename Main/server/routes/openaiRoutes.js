@@ -38,7 +38,7 @@ router.post('/', async (req, res) => {
       strength: Stats.strength,
       dexterity: Stats.dexterity,
       constitution: Stats.constitution,
-      intelegence: Stats.intelegence,
+      intelligence: Stats.intelligence,
       wisdom: Stats.wisdom,
       charisma: Stats.charisma
     })
