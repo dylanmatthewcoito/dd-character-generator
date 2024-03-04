@@ -1,20 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../utils/mutations';
 
-function LoginForm() {
+function LoginForm({ onLoginSuccess }) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const [loginUser] = useMutation(LOGIN_USER);
+    const [loginUser, { loading, error }] = useMutation(LOGIN_USER);
 
-    const handleEmailChange = (e) => {
-        setEmail(e.target.value);
-    };
+    const handleEmailChange = (e) => setEmail(e.target.value);
 
-    const handlePasswordChange = (e) => {
-        setPassword(e.target.value);
-    };
+    const handlePasswordChange = (e) => setPassword(e.target.value);
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -26,11 +23,22 @@ function LoginForm() {
 
             console.log('User logged in:', data.login);
 
+            // Store the token in localStorage or useContext to update global state
+            localStorage.setItem('token', data.login.token);
+            // If using AuthContext
+            // authContext.login(data.login.token);
+
             // Reset form fields
             setEmail('');
             setPassword('');
+
+            // Trigger the onLoginSuccess callback
+            if (typeof onLoginSuccess === 'function') {
+                onLoginSuccess();
+            }
         } catch (error) {
             console.error('Error logging in:', error.message);
+            // Optionally update state to show error to the user
         }
     };
 
@@ -58,6 +66,9 @@ function LoginForm() {
                     onChange={handlePasswordChange}
                 />
             </div>
+            {error && <div className="alert alert-danger" role="alert">
+                Error logging in: {error.message}
+            </div>}
             <button type="submit" className="btn btn-dark">Log In</button>
         </form>
     );

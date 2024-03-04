@@ -9,17 +9,11 @@ const SignupForm = () => {
 
     const [createUser] = useMutation(SIGNUP_USER);
 
-    const handleUsernameChange = (e) => {
-        setUsername(e.target.value);
-    };
+    const handleUsernameChange = (e) => setUsername(e.target.value);
 
-    const handleEmailChange = (e) => {
-        setEmail(e.target.value);
-    };
+    const handleEmailChange = (e) => setEmail(e.target.value);
 
-    const handlePasswordChange = (e) => {
-        setPassword(e.target.value);
-    };
+    const handlePasswordChange = (e) => setPassword(e.target.value);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -35,6 +29,11 @@ const SignupForm = () => {
             setUsername('');
             setEmail('');
             setPassword('');
+
+            if (typeof onSignupSuccess === 'function') {
+                onSignupSuccess();
+            }
+            
         } catch (error) {
             console.error('Error creating user:', error.message);
         }
@@ -75,6 +74,7 @@ const SignupForm = () => {
                     onChange={handlePasswordChange}
                 />
             </div>
+            
             <button type="submit" className="btn btn-dark">Sign Up</button>
         </form>
     );
