@@ -6,6 +6,7 @@ const characterSchema = new mongoose.Schema({
   race: { type: String, required: true },
   backstory: { type: String, required: true },
   image: { type: String, required: true },
+  user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
   stat: { type: mongoose.Schema.Types.ObjectId, ref: 'Stat' },
 });
 
