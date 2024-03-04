@@ -13,7 +13,7 @@ const statSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
-    intelegence: {
+    intelligence: {
         type: Number,
         required: true
     },

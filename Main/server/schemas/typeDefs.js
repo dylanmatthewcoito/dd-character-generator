@@ -14,7 +14,7 @@ type Stat {
   strength: Int!
   dexterity: Int!
   constitution: Int!
-  intelegence: Int!
+  intelligence: Int!
   wisdom: Int!
   charisma: Int!
 }
@@ -37,13 +37,33 @@ type Stat {
 
   type Query {
     getUserByUsername(username: String!): User
-    character: [Character]
+    getUserCharacters(username: String!): [Character]
   }
 
   type Mutation {
     createUser(username: String!, email: String! password: String!): User
     login(email: String!, password: String!): LoginResponse
+    createCharacter(username: String!, characterInput: CharacterInput!): Character
   }
+
+  input CharacterInput {
+    name: String!
+    charClass: String!
+    race: String!
+    backstory: String!
+    image: String!
+    stat: StatInput
+  }
+
+  input StatInput {
+    strength: Int!
+    dexterity: Int!
+    constitution: Int!
+    intelligence: Int!
+    wisdom: Int!
+    charisma: Int!
+  }
+
 `;
 
 module.exports = typeDefs;

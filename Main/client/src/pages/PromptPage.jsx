@@ -14,7 +14,7 @@ const PromptPage = ({ onSubmit }) => {
         Strength: 0,
         Dexterity: 0,
         Constitution: 0,
-        Intelegence: 0,
+        Intelligence: 0,
         Wisdom: 0,
         Charisma: 0
 
@@ -60,7 +60,7 @@ const PromptPage = ({ onSubmit }) => {
             strength: Stats.Strength,
             dexterity: Stats.Dexterity,
             constitution: Stats.Constitution,
-            intelegence: Stats.Intelegence,
+            intelligence: Stats.Intelligence,
             wisdom: Stats.Wisdom,
             charisma: Stats.Charisma
          };
