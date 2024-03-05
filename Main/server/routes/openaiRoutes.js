@@ -9,8 +9,8 @@ const Character = require('../models/Character');
 const Stat = require('../models/Stat');
 
 router.post('/', async (req, res) => {
-  const { name, race, charClass, backstory, ...Stats } = req.body;
-  console.log(Stats, "stats should be here")
+  const { name, race, charClass, backstory, stat } = req.body;
+  console.log(stat, "stats should be here")
   const prompt = `A Dungeons and Dragons themed character named ${name}, who has a race of ${race}, a class of ${charClass}, and their backstory/description is: ${backstory}.`;
 
   try {
@@ -31,20 +31,28 @@ router.post('/', async (req, res) => {
       charClass,
       backstory,
       image: imageUrl,
+      stat: {
+        strength: stat.strength,
+        dexterity: stat.dexterity,
+        constitution: stat.constitution,
+        intelligence: stat.intelligence,
+        wisdom: stat.wisdom,
+        charisma: stat.charisma
+      }
     });
-
+    
     // Save stats data to MongoDB
-    const newStat = new Stat({
-      strength: Stats.strength,
-      dexterity: Stats.dexterity,
-      constitution: Stats.constitution,
-      intelligence: Stats.intelligence,
-      wisdom: Stats.wisdom,
-      charisma: Stats.charisma
-    })
+    // const newStat = new Stat({
+    //   strength: Stats.strength,
+    //   dexterity: Stats.dexterity,
+    //   constitution: Stats.constitution,
+    //   intelligence: Stats.intelligence,
+    //   wisdom: Stats.wisdom,
+    //   charisma: Stats.charisma
+    // })
 
     await newCharacter.save();
-    await newStat.save();
+    //await newStat.save();
 
     res.json({ imageUrl: imageUrl });
   } catch (error) {

@@ -57,12 +57,14 @@ const PromptPage = ({ onSubmit }) => {
             race,
             charClass,
             backstory,
+            stat: {
             strength: Stats.Strength,
             dexterity: Stats.Dexterity,
             constitution: Stats.Constitution,
             intelligence: Stats.Intelligence,
             wisdom: Stats.Wisdom,
             charisma: Stats.Charisma
+            }
          };
 
         //Once we deploy to render we will hardcode our url string into an env file but for testing purposes localhost will work just fine
