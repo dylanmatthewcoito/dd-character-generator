@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useMutation, gql } from '@apollo/client';
 
 
 const PromptPage = ({ onSubmit }) => {
@@ -7,10 +8,10 @@ const PromptPage = ({ onSubmit }) => {
     const [race, setRace] = useState('');
     const [charClass, setCharClass] = useState('');
     const [backstory, setBackstory] = useState('');
-    const [imageUrl, setImageUrl] = useState(''); // State to store the generated image URL
+    const [imageUrl, setImageUrl] = useState('FIX THIS LATER'); // State to store the generated image URL
     const [isLoading, setIsLoading] = useState(false);// State to manage loading
 
-    const [Stats, setAllocatedStats] = useState({
+    const [stat, setAllocatedstat] = useState({
         Strength: 0,
         Dexterity: 0,
         Constitution: 0,
@@ -26,9 +27,9 @@ const PromptPage = ({ onSubmit }) => {
     const handleAddStat = (event, stat) => {
         event.preventDefault();
         if (totalPoints > 0) {
-            setAllocatedStats(prevStats => ({
-                ...prevStats,
-                [stat]: prevStats[stat] + 1
+            setAllocatedstat(prevstat => ({
+                ...prevstat,
+                [stat]: prevstat[stat] + 1
             }));
             setTotalPoints(prevPoints => prevPoints - 1);
         }
@@ -36,36 +37,98 @@ const PromptPage = ({ onSubmit }) => {
 
     const handleRemoveStat = (event, stat) => {
         event.preventDefault();
-        if (Stats[stat] > 0) {
-            setAllocatedStats(prevStats => ({
-                ...prevStats,
-                [stat]: prevStats[stat] - 1
+        if (stat[stat] > 0) {
+            setAllocatedstat(prevstat => ({
+                ...prevstat,
+                [stat]: prevstat[stat] - 1
             }));
             setTotalPoints(prevPoints => prevPoints + 1);
         }
     };
 
 
+    const CREATE_CHARACTER = gql`
+mutation CreateCharacter($username: String!, $characterInput: CharacterInput!) {
+  createCharacter(username: $username, characterInput: $characterInput) {
+    name
+    charClass
+    race
+    backstory
+    image
+    stat {
+      charisma
+      constitution
+      dexterity
+      intelligence
+      strength
+      wisdom
+    }
+  }
+}
+`;
+
+    const [createCharacter] = useMutation(CREATE_CHARACTER);
 
     const handleSubmit = async (event) => {
-        event.preventDefault(); // Prevents the default form submit action
-        setIsLoading(true); // Start loading
+        event.preventDefault();
+      
+        try {
+            const { data } = await createCharacter({
+                variables: {
+                    username: 'grrman', // Provide the actual username value
+                    characterInput: {
+                        name,
+                        charClass,
+                        race,
+                        backstory,
+                        image: imageUrl, // Assuming imageUrl is set correctly
+                        stat: {
+                            charisma: stat.Charisma,
+                            constitution: stat.Constitution,
+                            dexterity: stat.Dexterity,
+                            intelligence: stat.Intelligence,
+                            strength: stat.Strength,
+                            wisdom: stat.Wisdom
+                        }
+                    }
+                }
+            });
+            
+            const createdCharacter = data.createCharacter;
+            
+            console.log({state: { name, race, charClass, backstory, stat}});
+          // Handle the response as needed
+          console.log('Created Character:', createdCharacter);
+      
+          // Navigate to CharSheetPage with the created character data
+          navigate('/app/charsheet', { state: { name, race, charClass, backstory, stat} });
+        } catch (error) {
+          console.error('Error creating character:', error);
+        }
+      };
 
-        // Prepare the data to be sent to the backend
-        const formData = { 
-            name,
-            race,
-            charClass,
-            backstory,
-            stat: {
-            strength: Stats.Strength,
-            dexterity: Stats.Dexterity,
-            constitution: Stats.Constitution,
-            intelligence: Stats.Intelligence,
-            wisdom: Stats.Wisdom,
-            charisma: Stats.Charisma
-            }
-         };
+
+
+
+    // const handleSubmit = async (event) => {
+    //     event.preventDefault(); // Prevents the default form submit action
+    //     setIsLoading(true); // Start loading
+
+    //     // Prepare the data to be sent to the backend
+    //     const formData = { 
+    //         name,
+    //         race,
+    //         charClass,
+    //         backstory,
+    //         stat: {
+    //         strength: Stats.Strength,
+    //         dexterity: Stats.Dexterity,
+    //         constitution: Stats.Constitution,
+    //         intelligence: Stats.Intelligence,
+    //         wisdom: Stats.Wisdom,
+    //         charisma: Stats.Charisma
+    //         }
+    //      };
 
         //Once we deploy to render we will hardcode our url string into an env file but for testing purposes localhost will work just fine
         //Commented out below is what that might look like
@@ -96,34 +159,34 @@ const PromptPage = ({ onSubmit }) => {
 
 
 
-        try {
-            const response = await fetch('http://localhost:3001/api/generate-image', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData),
-            });
-            const data = await response.json();
-            console.log(data)
+    //     try {
+    //         const response = await fetch('http://localhost:3001/api/generate-image', {
+    //             method: 'POST',
+    //             headers: {
+    //                 'Content-Type': 'application/json',
+    //             },
+    //             body: JSON.stringify(formData),
+    //         });
+    //         const data = await response.json();
+    //         console.log(data)
 
-        if (response.ok) {
-            setImageUrl(data.imageUrl); 
-            // Navigate to CharSheetPage with state
+    //     if (response.ok) {
+    //         setImageUrl(data.imageUrl); 
+    //         // Navigate to CharSheetPage with state
 
-            navigate('/app/charsheet', 
-            { state: { ...data, name, race, charClass, backstory, Stats } }
-            );
+    //         navigate('/app/charsheet', 
+    //         { state: { ...data, name, race, charClass, backstory, Stats } }
+    //         );
 
-        } 
-        else {
-                throw new Error('Failed to generate image');
-        }} 
-        catch (error) {
-            console.error('Error generating image:', error);
-        }
+    //     } 
+    //     else {
+    //             throw new Error('Failed to generate image');
+    //     }} 
+    //     catch (error) {
+    //         console.error('Error generating image:', error);
+    //     }
 
-    };
+    // };
   
     return (
 
@@ -187,11 +250,11 @@ const PromptPage = ({ onSubmit }) => {
                 <h2 className='allocate-stats'>Allocate Stats</h2>
                 <div>
                     <p className='total-points-line'>Total Points Remaining: <span className='bolded'>{totalPoints}</span></p>
-                    {Object.keys(Stats).map(stat => (
+                    {Object.keys(stat).map(stat => (
                         <div key={stat}>
                             <button className='btn btn-dark m-1' onClick={(e) => handleRemoveStat(e, stat)}>-</button>
                             <button className='btn btn-dark m-1' onClick={(e) => handleAddStat(e, stat)}>+</button>
-                            <span className='prompt-stats'>{stat}: <span className='bolded'>{Stats[stat]}</span></span>
+                            <span className='prompt-stats'>{stat}: <span className='bolded'>{stat[stat]}</span></span>
                         </div>
                     ))}
                 </div>
