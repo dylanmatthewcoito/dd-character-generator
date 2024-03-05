@@ -18,11 +18,11 @@ const resolvers = {
         },
         getUserCharacters: async (_, { username }) => {
           try {
-            const user = await User.findOne({ username }).populate('characters');
+            const user = await User.findOne({ username }).populate('character');
             if (!user) {
               throw new Error('User not found');
             }
-            return user.characters;
+            return user.character;
           } catch (error) {
             throw new Error(`Error fetching characters for user: ${error.message}`);
           }
@@ -43,8 +43,15 @@ const resolvers = {
           });
           
           console.log(Character)
+          
           // Save the new character to the database
           const savedCharacter = await newCharacter.save();
+          
+          // Update the user document to include the character's ID
+          user.character.push(savedCharacter._id); // Assuming 'characters' is the array field in the User model
+          // Save the updated user document
+          await user.save();
+
   
           return savedCharacter;
         } catch (error) {

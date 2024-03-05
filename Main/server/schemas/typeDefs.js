@@ -24,7 +24,7 @@ type Stat {
     username: String!
     password: String!
     email: String!
-    character: Character
+    character: [Character]
   }
   type AuthPayload {
     token: String!
