@@ -17,15 +17,10 @@ body{
 .navbar {
     background-color:rgb(0, 0, 0) ;
 }
-.navbar-brand {
-    color: red;
+.logo {
     font-size: clamp(1.5rem, 5vw, 2rem);
 }
 
-.navbar-brand:hover {
-    color: rgb(255, 98, 98);
-    font-size: clamp(1.5rem, 5vw, 2rem);
-}
 
 .loading-indicator {
     font-size: 5vh;
@@ -95,5 +90,19 @@ body{
     font-size: 3vh;
     font-weight: 700;
 }
+.red ,.red-link {
+    color: red;
+}
 
+.red-link:hover {
+    color: rgb(255, 163, 135);
+}
+
+.profile-stats {
+    font-weight: 600;
+}
+
+.profile-character-name {
+    font-weight: 700;
+}
 /* Start https://www.cursors-4u.com */ * {cursor: url(https://cur.cursors-4u.net/sports/spo-1/spo15.cur), auto !important;} /* End https://www.cursors-4u.com */

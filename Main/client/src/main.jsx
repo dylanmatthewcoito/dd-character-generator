@@ -4,7 +4,7 @@ import App from './App';
 import AuthPage from './pages/AuthPage'; // Import the AuthPage
 import PromptPage from './pages/PromptPage';
 import CharSheetPage from './pages/CharSheetPage';
-import ProfilePage from './pages/ProfilePage'
+import ProfilePageComponent from './pages/ProfilePage'
 const router = createBrowserRouter([
   {
     path: '/',
@@ -28,7 +28,7 @@ const router = createBrowserRouter([
           },
           {
             path: 'profile',
-            element: <ProfilePage/>,
+            element: <ProfilePageComponent/>,
           },
           // other routes as needed
         ],
