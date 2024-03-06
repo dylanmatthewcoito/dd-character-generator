@@ -37,7 +37,7 @@ const resolvers = {
     Mutation: {
       createCharacter: async (_, { username, characterInput }) => {
         console.log(characterInput)
-        const prompt = `A Dungeons and Dragons themed character named ${characterInput.name}, who has a race of ${characterInput.race}, a class of ${characterInput.charClass}, and their backstory/description is: ${characterInput.backstory}.`;
+        const prompt = `A Dungeons and Dragons themed character portrait where the character is named ${characterInput.name}, who has a race of ${characterInput.race}, a class of ${characterInput.charClass}, and their backstory/description is: ${characterInput.backstory}.`;
         try {
           const user = await User.findOne({ username });
 
