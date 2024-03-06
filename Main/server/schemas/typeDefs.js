@@ -6,6 +6,7 @@ type Character {
   race: String!
   backstory: String!
   image: String!
+  user: User
   stat: Stat
 }
 

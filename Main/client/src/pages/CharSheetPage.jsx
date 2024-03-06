@@ -4,7 +4,7 @@ import { useLocation } from 'react-router-dom';
 const CharSheetPage = () => {
   const location = useLocation();
 
-  const { imageUrl, name, race, charClass, backstory, Stats } = location.state || {};
+  const { imageUrl, name, race, charClass, backstory, stat } = location.state || {};
 
 
   return (
@@ -25,8 +25,8 @@ const CharSheetPage = () => {
               {/* ...additional character sheet details... */}
               <p className="lead"><span className='bolded'>Stats:</span></p>
                             <ul>
-                                {Object.keys(Stats).map(stat => (
-                                    <li key={stat}>{stat}: {Stats[stat]}</li>
+                                {stat && Object.keys(stat).map(stat => (
+                                    <li key={stat}>{stat}: {stat[stat]}</li>
                                 ))}
                             </ul>
             </div>

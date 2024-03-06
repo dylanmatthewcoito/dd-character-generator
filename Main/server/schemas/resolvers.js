@@ -35,6 +35,8 @@ const resolvers = {
           if (!user) {
             throw new Error('User not found');
           }
+          console.log(user)
+          console.log(username)
           // Create a new character associated with the user
           const newCharacter = new Character({
             ...characterInput,
