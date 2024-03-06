@@ -1,6 +1,7 @@
 
 const typeDefs = `
 type Character {
+  _id: ID!
   name: String!
   charClass: String!
   race: String!

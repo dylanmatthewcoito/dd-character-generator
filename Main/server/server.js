@@ -2,7 +2,6 @@ const express = require('express');
 const { ApolloServer } = require('@apollo/server');
 const { expressMiddleware } = require('@apollo/server/express4');
 const path = require('path');
-const imageRoutes = require('./routes/openaiRoutes');
 const cors = require('cors');
 // Import Stripe and initialize with secret key
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
@@ -35,7 +34,6 @@ const startApolloServer = async () => {
   app.use(cors());
   app.use(express.urlencoded({ extended: true }));
   app.use(express.json());
-  app.use('/api/generate-image', imageRoutes);
   app.use('/graphql', expressMiddleware(server));
 
   // Route to create a payment intent
