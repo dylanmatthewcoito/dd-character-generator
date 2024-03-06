@@ -1,7 +1,13 @@
-const User = require('../models/User');
+require('dotenv').config();
+const OpenAIApi = require("openai");
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const Character = require('../models/Character');
+const User = require('../models/User')
+
+const openai = new OpenAIApi({
+  apiKey: process.env.OPENAI_API_KEY,
+});
 
 const resolvers = {
     Query: {
@@ -30,19 +36,33 @@ const resolvers = {
         },
     Mutation: {
       createCharacter: async (_, { username, characterInput }) => {
+        console.log(characterInput)
+        const prompt = `A Dungeons and Dragons themed character named ${characterInput.name}, who has a race of ${characterInput.race}, a class of ${characterInput.charClass}, and their backstory/description is: ${characterInput.backstory}.`;
         try {
           const user = await User.findOne({ username });
+
+          const response = await openai.images.generate({
+            model: "dall-e-3",
+            prompt: prompt
+          });
+          console.log(response)
+          const imageUrl = response.data[0].url;
+          console.log(imageUrl)
+          
           if (!user) {
             throw new Error('User not found');
           }
+          console.log(user)
+          console.log(username)
           // Create a new character associated with the user
           const newCharacter = new Character({
             ...characterInput,
             stat: characterInput.stat,
             user: user._id, // Associate the character with the user
+            image: imageUrl,
           });
           
-          console.log(Character)
+          console.log(newCharacter)
           
           // Save the new character to the database
           const savedCharacter = await newCharacter.save();
