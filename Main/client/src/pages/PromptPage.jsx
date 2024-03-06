@@ -66,17 +66,16 @@ mutation CreateCharacter($username: String!, $characterInput: CharacterInput!) {
   }
 }
 `;
-
     const [createCharacter] = useMutation(CREATE_CHARACTER);
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-      
+        const storedUsername = localStorage.getItem('username');
         try {
             setIsLoading(true)
             const { data } = await createCharacter({
                 variables: {
-                    username: 'mikey', // Provide the actual username value
+                    username: storedUsername, // Provide the actual username value
                     characterInput: {
                         name,
                         charClass,

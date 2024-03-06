@@ -4,10 +4,10 @@ import { GET_USER_CHARACTERS } from '../utils/queries';
 
 function ProfilePageComponent() {
   // Hardcoding the username for testing purposes
-  const hardcodedUsername = "mikey";
+const storedUsername = localStorage.getItem('username')
 
   const { loading, error, data } = useQuery(GET_USER_CHARACTERS, {
-    variables: { username: hardcodedUsername },
+    variables: { username: storedUsername },
   });
 
   if (loading) return <p>Loading...</p>;
@@ -15,7 +15,7 @@ function ProfilePageComponent() {
 
   return (
     <div className='body-background pt-5 m-5'>
-        <h2 className='userProfileName'>{hardcodedUsername}'s Characters</h2>
+        <h2 className='userProfileName'>{storedUsername}'s Characters</h2>
         <div className="character-cards">
             {data?.getUserCharacters.map(({ _id, name, charClass, race, backstory, image, stat }) => (
                 <div key={_id} className="character-card">
