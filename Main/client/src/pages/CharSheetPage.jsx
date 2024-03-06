@@ -4,7 +4,8 @@ import { useLocation } from 'react-router-dom';
 const CharSheetPage = () => {
   const location = useLocation();
 
-  const { imageUrl, name, race, charClass, backstory, stat } = location.state || {};
+  const { image, name, race, charClass, backstory, stat } = location.state || {};
+  console.log(location.state)
 
 
   return (
@@ -12,8 +13,8 @@ const CharSheetPage = () => {
       <div className="container">
         <div className="row">
           <div className="col-lg-4 col-md-6 mb-4 mt-5">
-            {imageUrl && (
-              <img src={imageUrl} alt="Generated Character" className="img-fluid rounded" />
+            {image && (
+              <img src={image} alt="Generated Character" className="img-fluid rounded" />
             )}
           </div>
           <div className="col-lg-8 col-md-6 mt-5">

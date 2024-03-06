@@ -8,7 +8,7 @@ const PromptPage = ({ onSubmit }) => {
     const [race, setRace] = useState('');
     const [charClass, setCharClass] = useState('');
     const [backstory, setBackstory] = useState('');
-    const [imageUrl, setImageUrl] = useState('FIX THIS LATER'); // State to store the generated image URL
+    const [imageUrl, setImageUrl] = useState(''); // State to store the generated image URL
     const [isLoading, setIsLoading] = useState(false);// State to manage loading
 
     const [stat, setAllocatedstat] = useState({
@@ -73,9 +73,10 @@ mutation CreateCharacter($username: String!, $characterInput: CharacterInput!) {
         event.preventDefault();
       
         try {
+            setIsLoading(true)
             const { data } = await createCharacter({
                 variables: {
-                    username: 'grrman', // Provide the actual username value
+                    username: 'mikey', // Provide the actual username value
                     characterInput: {
                         name,
                         charClass,
@@ -95,13 +96,14 @@ mutation CreateCharacter($username: String!, $characterInput: CharacterInput!) {
             });
             
             const createdCharacter = data.createCharacter;
+            setImageUrl(imageUrl)
             
             console.log({state: { name, race, charClass, backstory, stat}});
           // Handle the response as needed
           console.log('Created Character:', createdCharacter);
       
           // Navigate to CharSheetPage with the created character data
-          navigate('/app/charsheet', { state: { name, race, charClass, backstory, stat} });
+          navigate('/app/charsheet', { state: { ...createdCharacter } });
         } catch (error) {
           console.error('Error creating character:', error);
         }
