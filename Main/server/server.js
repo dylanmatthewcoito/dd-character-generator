@@ -4,9 +4,12 @@ const { expressMiddleware } = require('@apollo/server/express4');
 const path = require('path');
 const imageRoutes = require('./routes/openaiRoutes');
 const cors = require('cors');
+// Import Stripe and initialize with secret key
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 const { typeDefs, resolvers } = require('./schemas');
 const db = require('./config/connection');
+
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -34,6 +37,26 @@ const startApolloServer = async () => {
   app.use(express.json());
   app.use('/api/generate-image', imageRoutes);
   app.use('/graphql', expressMiddleware(server));
+
+  // Route to create a payment intent
+  app.post('/create-payment-intent', async (req, res) => {
+    const { amount } = req.body;
+
+    try {
+      // Create a payment intent with the specified amount
+      const paymentIntent = await stripe.paymentIntents.create({
+        amount: amount * 100, // Convert amount to cents
+        currency: 'usd',
+        // You can add more options like metadata, description, etc. here
+      });
+    
+      // Send client secret back to the client along with success message
+      res.json({ success: true, message: 'Payment intent created successfully💳', clientSecret: paymentIntent.client_secret });
+    } catch (error) {
+      console.error('Error creating payment intent:', error);
+      res.status(500).json({ success: false, error: 'Failed to create payment intent❌' });
+    }
+  });
 
   // if we're in production, serve client/dist as static assets
   if (process.env.NODE_ENV === 'production') {
