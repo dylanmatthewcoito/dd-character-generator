@@ -14,8 +14,8 @@ function ProfilePageComponent() {
   if (error) return <p>Error: {error.message}</p>;
 
   return (
-    <div className='body-background pt-5'>
-        <h2>{hardcodedUsername}'s Characters</h2>
+    <div className='body-background pt-5 m-5'>
+        <h2 className='userProfileName'>{hardcodedUsername}'s Characters</h2>
         <div className="character-cards">
             {data?.getUserCharacters.map(({ _id, name, charClass, race, backstory, image, stat }) => (
                 <div key={_id} className="character-card">

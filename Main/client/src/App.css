@@ -66,5 +66,34 @@ body{
     margin-bottom: 3vh;
 }
 
+.character-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.character-card {
+    border: 1px solid #000000;
+    padding: 20px;
+    border-radius: 8px;
+    width: 250px;
+    background-color: #8f650a69;
+}
+
+.character-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+
+.stats p {
+    margin: 5px 0;
+}
+
+.userProfileName {
+    font-size: 3vh;
+    font-weight: 700;
+}
 
 /* Start https://www.cursors-4u.com */ * {cursor: url(https://cur.cursors-4u.net/sports/spo-1/spo15.cur), auto !important;} /* End https://www.cursors-4u.com */
