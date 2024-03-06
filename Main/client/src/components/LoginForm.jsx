@@ -5,7 +5,6 @@ import { LOGIN_USER } from '../utils/mutations';
 function LoginForm({ onLoginSuccess }) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-
     const [loginUser, { loading, error }] = useMutation(LOGIN_USER);
 
     const handleEmailChange = (e) => setEmail(e.target.value);
@@ -21,10 +20,11 @@ function LoginForm({ onLoginSuccess }) {
                 variables: { email, password },
             });
 
-            console.log('User logged in:', data.login);
+            console.log('User logged in:', data);
 
             // Store the token in localStorage or useContext to update global state
             localStorage.setItem('token', data.login.token);
+            localStorage.setItem('username', data.login.user.username)
             // If using AuthContext
             // authContext.login(data.login.token);
 
