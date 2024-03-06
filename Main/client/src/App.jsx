@@ -1,9 +1,10 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-import { Outlet } from 'react-router-dom';
+import { Outlet, Routes, Route } from 'react-router-dom';
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 import Navbar from './components/Navbar';
+import DonationForm from './components/StripePayments'; 
 
 const client = new ApolloClient({
   uri: '/graphql',
@@ -11,13 +12,14 @@ const client = new ApolloClient({
 });
 
 function App() {
-  // No need for Router here anymore, just provide the ApolloProvider
   return (
     <ApolloProvider client={client}>
       <div>
-      <Navbar />
-        {/* Content of App, perhaps some layout components */}
-        <Outlet /> {/* This is where child routes will render */}
+        <Navbar />
+        <Routes>
+          <Route path='/donate' element={<DonationForm />} />
+        </Routes>
+        <Outlet />
       </div>
     </ApolloProvider>
   );
