@@ -6,6 +6,11 @@ const Navbar = () => {
     <nav className="navbar py-4 fixed-top">
       <div className="container">
         <Link className="navbar-brand" to="/app/prompt">D&D Character Generator</Link>
+        <ul className="navbar-nav ml-auto">
+          <li className="nav-item">
+            <Link className="donate-link" to="/donate">Donate</Link>
+          </li>
+        </ul>
       </div>
     </nav>
   );
