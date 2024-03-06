@@ -1,22 +1,22 @@
 import { gql } from '@apollo/client';
 
-export const QUERY_TECH = gql`
-  query tech {
-    tech {
+export const GET_USER_CHARACTERS = gql`
+  query GetUserCharacters($username: String!) {
+    getUserCharacters(username: $username) {
       _id
       name
-    }
-  }
-`;
-
-export const QUERY_MATCHUPS = gql`
-  query matchups($_id: String) {
-    matchups(_id: $_id) {
-      _id
-      tech1
-      tech2
-      tech1_votes
-      tech2_votes
+      charClass
+      race
+      backstory
+      image
+      stat {
+        strength
+        dexterity
+        constitution
+        intelligence
+        wisdom
+        charisma
+      }
     }
   }
 `;
