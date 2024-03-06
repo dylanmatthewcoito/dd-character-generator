@@ -35,12 +35,12 @@ const PromptPage = ({ onSubmit }) => {
         }
     };
 
-    const handleRemoveStat = (event, stat) => {
+    const handleRemoveStat = (event, statKey) => {
         event.preventDefault();
-        if (stat[stat] > 0) {
+        if (stat[statKey] > 0) {
             setAllocatedstat(prevstat => ({
                 ...prevstat,
-                [stat]: prevstat[stat] - 1
+                [statKey]: prevstat[statKey] - 1
             }));
             setTotalPoints(prevPoints => prevPoints + 1);
         }
@@ -252,11 +252,11 @@ mutation CreateCharacter($username: String!, $characterInput: CharacterInput!) {
                 <h2 className='allocate-stats'>Allocate Stats</h2>
                 <div>
                     <p className='total-points-line'>Total Points Remaining: <span className='bolded'>{totalPoints}</span></p>
-                    {Object.keys(stat).map(stat => (
-                        <div key={stat}>
-                            <button className='btn btn-dark m-1' onClick={(e) => handleRemoveStat(e, stat)}>-</button>
-                            <button className='btn btn-dark m-1' onClick={(e) => handleAddStat(e, stat)}>+</button>
-                            <span className='prompt-stats'>{stat}: <span className='bolded'>{stat[stat]}</span></span>
+                    {Object.keys(stat).map(statKey => (
+                        <div key={statKey}>
+                            <button className='btn btn-dark m-1' onClick={(e) => handleRemoveStat(e, statKey)}>-</button>
+                            <button className='btn btn-dark m-1' onClick={(e) => handleAddStat(e, statKey)}>+</button>
+                            <span className='prompt-stats'>{statKey}: <span className='bolded'>{stat[statKey]}</span></span>
                         </div>
                     ))}
                 </div>

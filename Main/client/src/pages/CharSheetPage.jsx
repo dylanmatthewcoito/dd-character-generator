@@ -26,9 +26,12 @@ const CharSheetPage = () => {
               {/* ...additional character sheet details... */}
               <p className="lead"><span className='bolded'>Stats:</span></p>
                             <ul>
-                                {stat && Object.keys(stat).map(stat => (
-                                    <li key={stat}>{stat}: {stat[stat]}</li>
-                                ))}
+                                {stat && Object.keys(stat).map(statKey => {
+                                    if (statKey === '__typename') {
+                                      return
+                                    }
+                                    return <li key={statKey}>{statKey}: {stat[statKey]}</li>
+                                })}
                             </ul>
             </div>
           </div>
