@@ -12,12 +12,12 @@ const PromptPage = ({ onSubmit }) => {
     const [isLoading, setIsLoading] = useState(false);// State to manage loading
 
     const [stat, setAllocatedstat] = useState({
-        Strength: 0,
-        Dexterity: 0,
+        Charisma: 0,
         Constitution: 0,
+        Dexterity: 0,
         Intelligence: 0,
+        Strength: 0,
         Wisdom: 0,
-        Charisma: 0
 
     });
     const [totalPoints, setTotalPoints] = useState(30);
@@ -126,7 +126,7 @@ mutation CreateCharacter($username: String!, $characterInput: CharacterInput!) {
   
     return (
 
-        <div className='body-background pt-5'>
+        <div className='body-background pt-5 mt-5'>
             {isLoading ? (
            <div className="d-flex justify-content-center align-items-center" style={{ height: '100vh' }}>
            <div className="spinner-border custom-spinner" role="status">
