@@ -67,7 +67,7 @@ function LoginForm({ onLoginSuccess }) {
                 />
             </div>
             {error && <div className="alert alert-danger" role="alert">
-                Error logging in: {error.message}
+                Error logging in: {"Email or Password Incorrect"}
             </div>}
             <button type="submit" className="btn btn-dark">Log In</button>
         </form>
