@@ -6,17 +6,16 @@ const SignupForm = () => {
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-
-    const [createUser] = useMutation(SIGNUP_USER);
+    const [customError, setCustomError] = useState(null);
+    const [createUser, { loading }] = useMutation(SIGNUP_USER);
 
     const handleUsernameChange = (e) => setUsername(e.target.value);
-
     const handleEmailChange = (e) => setEmail(e.target.value);
-
     const handlePasswordChange = (e) => setPassword(e.target.value);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setCustomError(null);
 
         try {
             const { data } = await createUser({
@@ -35,7 +34,12 @@ const SignupForm = () => {
             }
             
         } catch (error) {
-            console.error('Error creating user:', error.message);
+            if (error.message.includes("E11000")) {
+                setCustomError('Email already exists');
+            } else {
+                console.error('Error creating user:', error.message);
+                setCustomError(error.message); // Fallback to generic error message
+            }
         }
     };
 
@@ -74,7 +78,9 @@ const SignupForm = () => {
                     onChange={handlePasswordChange}
                 />
             </div>
-            
+            {customError && <div className="alert alert-danger" role="alert">
+                Error: {customError}
+            </div>}
             <button type="submit" className="btn btn-dark">Sign Up</button>
         </form>
     );
