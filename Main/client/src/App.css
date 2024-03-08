@@ -16,11 +16,15 @@ body{
 
 .navbar {
     background-color:rgb(0, 0, 0) ;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
 }
+
 .logo {
     font-size: clamp(1.5rem, 5vw, 2rem);
 }
-
 
 .loading-indicator {
     font-size: 5vh;
@@ -90,7 +94,7 @@ body{
     font-size: 3vh;
     font-weight: 700;
 }
-.red ,.red-link {
+.red, .red-link {
     color: red;
 }
 
@@ -105,4 +109,48 @@ body{
 .profile-character-name {
     font-weight: 700;
 }
+
 /* Start https://www.cursors-4u.com */ * {cursor: url(https://cur.cursors-4u.net/sports/spo-1/spo15.cur), auto !important;} /* End https://www.cursors-4u.com */
+
+
+/* CSS for hamburger menu */
+.hamburger {
+    cursor: pointer;
+    position: fixed;
+    top: 20px;
+    right: 70px;
+    z-index: 1000;
+}
+
+.line {
+    width: 30px;
+    height: 4px;
+    background-color: red;
+    margin: 6px;
+    transition: all 0.3s ease;
+}
+
+.navbar-nav {
+    position: fixed;
+    top: 0;
+    right: -300px;
+    width: 300px;
+    height: 100vh;
+    background-color: rgb(0, 0, 0);
+    padding: 2rem;
+    padding-top: 100px;
+    transition: right 0.3s ease;
+    z-index: 999;
+}
+
+.navbar-nav.open {
+    right: 0;
+}
+
+.nav-item {
+    margin-bottom: 1rem;
+}
+
+.nav-item a {
+    font-size: 1.5rem;
+}
