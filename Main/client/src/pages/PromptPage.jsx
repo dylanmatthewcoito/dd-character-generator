@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useMutation, gql } from '@apollo/client';
-
+import Auth from '../utils/auth';
 
 const PromptPage = ({ onSubmit }) => {
     const [name, setName] = useState('');
@@ -125,18 +125,20 @@ mutation CreateCharacter($username: String!, $characterInput: CharacterInput!) {
 
   
     return (
-
+    <div>
+        {Auth.loggedIn() ? (
+        <>
         <div className='body-background pt-5 mt-5'>
             {isLoading ? (
-           <div className="d-flex justify-content-center align-items-center" style={{ height: '100vh' }}>
+                <div className="d-flex justify-content-center align-items-center" style={{ height: '100vh' }}>
            <div className="spinner-border custom-spinner" role="status">
              <span className="visually-hidden">Loading</span>
            </div>
            <span className="ms-3 loading-indicator">A Hero was born...</span>
          </div>
             ) : (
-         
-            <form onSubmit={handleSubmit} className="container">
+                
+                <form onSubmit={handleSubmit} className="container">
             <div className="mb-1">
                 <label htmlFor="name" className="form-label">Name:</label>
                 <input
@@ -207,8 +209,27 @@ mutation CreateCharacter($username: String!, $characterInput: CharacterInput!) {
                 <div className="text-center mt-4">
                     <img src={imageUrl} alt="Generated Character" className="img-fluid" />
                 </div>
-            )}
+            )}  
         </div>
+        </>
+        ) : (
+            <div>
+
+            <p className='mt-5'>
+              You need to be logged in to create a character! Please log in!
+            </p>
+            <button 
+                 className="btn btn-dark mt-3" 
+                onClick={() => window.location.assign('/')} // Redirect to the home page
+            >
+             Go to Home Page
+         </button>
+            </div>
+          )}
+
+        
+
+    </div>    
     );
 };
 

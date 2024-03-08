@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { SIGNUP_USER } from '../utils/mutations';
+import Auth from '../utils/auth';
+
 
 const SignupForm = () => {
     const [username, setUsername] = useState('');
@@ -23,13 +25,13 @@ const SignupForm = () => {
             });
 
             console.log('User created:', data.createUser);
-
             // Reset form fields
             setUsername('');
             setEmail('');
             setPassword('');
-
+            
             if (typeof onSignupSuccess === 'function') {
+                Auth.login(data.login.token);
                 onSignupSuccess();
             }
             
