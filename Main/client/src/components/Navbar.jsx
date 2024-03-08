@@ -1,9 +1,14 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import Auth from '../utils/auth';
 
 const Navbar = () => {
   const location = useLocation(); // Use the useLocation hook to access the current path
 
+  const handleLogout = () => {
+    Auth.logout();
+  }
+  //  Auth.logout();
   // Determine if the current page is the AuthPage by checking the location.pathname
   // Adjust the condition based on your AuthPage's route
   const isAuthPage = location.pathname === '/' || location.pathname.startsWith('/login') || location.pathname.startsWith('/signup');
@@ -25,7 +30,7 @@ const Navbar = () => {
               <Link className="profile red-link" to="/app/profile">Characters</Link>
             </li>
             <li className="nav-item">
-              <Link className="log-out red-link" to="/">Log Out</Link>
+              <Link className="log-out red-link" to="/" onClick={handleLogout}>Log Out</Link>
             </li>
           </ul>
       </div>

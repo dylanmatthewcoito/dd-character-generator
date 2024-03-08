@@ -1,10 +1,29 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
 import { GET_USER_CHARACTERS } from '../utils/queries';
+import Auth from '../utils/auth';
+
+const renderHomeButton = () => (
+  <div>
+      <p className='mt-5'>
+        You need to be logged in to create a character! Please log in!
+      </p>
+      <button 
+            className="btn btn-dark mt-3" 
+            onClick={() => window.location.assign('/')} // Redirect to the home page
+        >
+        Go to Home Page
+    </button>
+  </div>
+)
 
 function ProfilePageComponent() {
   // Hardcoding the username for testing purposes
 const storedUsername = localStorage.getItem('username')
+
+  if (!storedUsername){
+    return renderHomeButton()
+  }
 
   const { loading, error, data } = useQuery(GET_USER_CHARACTERS, {
     variables: { username: storedUsername },
@@ -14,6 +33,9 @@ const storedUsername = localStorage.getItem('username')
   if (error) return <p>Error: {error.message}</p>;
 
   return (
+    <div>
+        {Auth.loggedIn() ? (
+        <>
     <div className='body-background pt-5 m-5'>
         <h2 className='userProfileName'>{storedUsername}'s Characters</h2>
         <div className="character-cards">
@@ -36,6 +58,31 @@ const storedUsername = localStorage.getItem('username')
             ))}
         </div>
     </div>
+     </>
+     ) : (
+         <div>
+
+         <p className='mt-5'>
+           You need to be logged in to create a character! Please log in!
+         </p>
+         <p className='mt-5'>
+           You need to be logged in to create a character! Please log in!
+         </p>
+         <p className='mt-5'>
+           You need to be logged in to create a character! Please log in!
+         </p>
+         <button 
+              className="btn btn-dark mt-3" 
+             onClick={() => window.location.assign('/')} // Redirect to the home page
+         >
+          Go to Home Page
+      </button>
+         </div>
+       )}
+
+     
+
+ </div>
   );
 }
 

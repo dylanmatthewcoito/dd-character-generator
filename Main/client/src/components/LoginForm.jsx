@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../utils/mutations';
+import Auth from '../utils/auth';
 
 function LoginForm({ onLoginSuccess }) {
     const [email, setEmail] = useState('');
@@ -20,10 +21,11 @@ function LoginForm({ onLoginSuccess }) {
                 variables: { email, password },
             });
 
+            Auth.login(data.login.token);
             console.log('User logged in:', data);
 
             // Store the token in localStorage or useContext to update global state
-            localStorage.setItem('token', data.login.token);
+            //  localStorage.setItem('token', data.login.token);
             localStorage.setItem('username', data.login.user.username)
             // If using AuthContext
             // authContext.login(data.login.token);
