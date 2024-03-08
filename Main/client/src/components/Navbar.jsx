@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import Auth from '../utils/auth';
 
@@ -12,6 +12,11 @@ const Navbar = () => {
   // Determine if the current page is the AuthPage by checking the location.pathname
   // Adjust the condition based on your AuthPage's route
   const isAuthPage = location.pathname === '/' || location.pathname.startsWith('/login') || location.pathname.startsWith('/signup');
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
 
   return (
   <div>
