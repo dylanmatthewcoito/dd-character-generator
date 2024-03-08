@@ -46,7 +46,7 @@ const startApolloServer = async () => {
       const paymentIntent = await stripe.paymentIntents.create({
         amount: amount * 100, // Convert amount to cents
         currency: 'usd',
-        // You can add more options like metadata, description, etc. here
+        // Can add more options later: like metadata, description, etc. here
       });
     
       // Send client secret back to the client along with success message
@@ -60,12 +60,17 @@ const startApolloServer = async () => {
   // if we're in production, serve client/dist as static assets
   if (process.env.NODE_ENV === 'production') {
     app.use(express.static(path.join(__dirname, '../client/dist')));
-
+    
     app.get('*', (req, res) => {
       res.sendFile(path.join(__dirname, '../client/dist/index.html'));
     });
   } 
-
+  
+  // Define route for /donate
+  app.get('/donate', (req, res) => {
+    // Send the index.html file
+    res.sendFile(path.join(__dirname, '../client/dist/', 'index.html'));
+  });
 
   db.on('error', console.error.bind(console, 'MongoDB connection error:'));
   db.once('open', () => {
