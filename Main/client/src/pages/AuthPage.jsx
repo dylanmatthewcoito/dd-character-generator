@@ -21,7 +21,12 @@ function AuthPage() {
     const toggleMode = () => setIsLoginMode(!isLoginMode);
 
     return (
-        <div className="auth-container container py-5">
+        <div className="auth-container container py-5 mt-5">
+            <nav className="navbar py-5 fixed-top">
+                <div className="container">
+                    <div className="logo red">D&D Character Generator</div>
+                </div>
+            </nav>
             <h2 className='h2'>{isLoginMode ? 'Login' : 'Sign up'}</h2>
             {isLoginMode
                 ? <LoginForm onLoginSuccess={handleLoginSuccess} />

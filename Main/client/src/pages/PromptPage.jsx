@@ -12,12 +12,12 @@ const PromptPage = ({ onSubmit }) => {
     const [isLoading, setIsLoading] = useState(false);// State to manage loading
 
     const [stat, setAllocatedstat] = useState({
-        Strength: 0,
-        Dexterity: 0,
+        Charisma: 0,
         Constitution: 0,
+        Dexterity: 0,
         Intelligence: 0,
+        Strength: 0,
         Wisdom: 0,
-        Charisma: 0
 
     });
     const [totalPoints, setTotalPoints] = useState(30);
@@ -66,17 +66,16 @@ mutation CreateCharacter($username: String!, $characterInput: CharacterInput!) {
   }
 }
 `;
-
     const [createCharacter] = useMutation(CREATE_CHARACTER);
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-      
+        const storedUsername = localStorage.getItem('username');
         try {
             setIsLoading(true)
             const { data } = await createCharacter({
                 variables: {
-                    username: 'mikey', // Provide the actual username value
+                    username: storedUsername, // Provide the actual username value
                     characterInput: {
                         name,
                         charClass,
@@ -110,41 +109,6 @@ mutation CreateCharacter($username: String!, $characterInput: CharacterInput!) {
       };
 
 
-
-
-    // const handleSubmit = async (event) => {
-    //     event.preventDefault(); // Prevents the default form submit action
-    //     setIsLoading(true); // Start loading
-
-    //     // Prepare the data to be sent to the backend
-    //     const formData = { 
-    //         name,
-    //         race,
-    //         charClass,
-    //         backstory,
-    //         stat: {
-    //         strength: Stats.Strength,
-    //         dexterity: Stats.Dexterity,
-    //         constitution: Stats.Constitution,
-    //         intelligence: Stats.Intelligence,
-    //         wisdom: Stats.Wisdom,
-    //         charisma: Stats.Charisma
-    //         }
-    //      };
-
-        //Once we deploy to render we will hardcode our url string into an env file but for testing purposes localhost will work just fine
-        //Commented out below is what that might look like
-
-        /*  
-        const response = await fetch(`${process.env.REACT_APP_API_URL}/api/generate-image`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(formData),
-        });
-        */
-
         // Below is used for testing the loading page, to test make sure to uncomment and comment out the fetch chain 
         // setTimeout(async () => {
         //     // Simulate setting data after fetching
@@ -159,40 +123,10 @@ mutation CreateCharacter($username: String!, $characterInput: CharacterInput!) {
         //     setIsLoading(false); // Stop loading after simulation
         // }, 20000000); // Simulate a 3-second delay
 
-
-
-    //     try {
-    //         const response = await fetch('http://localhost:3001/api/generate-image', {
-    //             method: 'POST',
-    //             headers: {
-    //                 'Content-Type': 'application/json',
-    //             },
-    //             body: JSON.stringify(formData),
-    //         });
-    //         const data = await response.json();
-    //         console.log(data)
-
-    //     if (response.ok) {
-    //         setImageUrl(data.imageUrl); 
-    //         // Navigate to CharSheetPage with state
-
-    //         navigate('/app/charsheet', 
-    //         { state: { ...data, name, race, charClass, backstory, Stats } }
-    //         );
-
-    //     } 
-    //     else {
-    //             throw new Error('Failed to generate image');
-    //     }} 
-    //     catch (error) {
-    //         console.error('Error generating image:', error);
-    //     }
-
-    // };
   
     return (
 
-        <div className='body-background pt-5'>
+        <div className='body-background pt-5 mt-5'>
             {isLoading ? (
            <div className="d-flex justify-content-center align-items-center" style={{ height: '100vh' }}>
            <div className="spinner-border custom-spinner" role="status">
