@@ -2,8 +2,11 @@ require('dotenv').config();
 const OpenAIApi = require("openai");
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
+const path = require('path');
 const Character = require('../models/Character');
 const User = require('../models/User')
+const { downloadImage } = require('../utils/downloadImage');
+const imageStoragePath = path.join(__dirname, '../public/images');
 
 const openai = new OpenAIApi({
   apiKey: process.env.OPENAI_API_KEY,
@@ -37,7 +40,7 @@ const resolvers = {
     Mutation: {
       createCharacter: async (_, { username, characterInput }) => {
         console.log(characterInput)
-        const prompt = `A Dungeons and Dragons themed character portrait where the character is named ${characterInput.name}, who has a race of ${characterInput.race}, a class of ${characterInput.charClass}, and their backstory/description is: ${characterInput.backstory}.`;
+        const prompt = `Create a high definition portrait of a Dungeons and Dragons themed character who is named ${characterInput.name}, has a race of ${characterInput.race}, a class of ${characterInput.charClass}, and their descriptive features are: ${characterInput.backstory}.`;
         try {
           const user = await User.findOne({ username });
 
@@ -48,6 +51,11 @@ const resolvers = {
           console.log(response)
           const imageUrl = response.data[0].url;
           console.log(imageUrl)
+          const imageName = `${new Date().getTime()}-${characterInput.name.replace(/\s+/g, '_')}.png`;
+          const localImagePath = path.join(imageStoragePath, imageName);
+
+          await downloadImage(imageUrl, localImagePath);
+          const imagePathForDB = `/images/${imageName}`; 
           
           if (!user) {
             throw new Error('User not found');
@@ -59,7 +67,7 @@ const resolvers = {
             ...characterInput,
             stat: characterInput.stat,
             user: user._id, // Associate the character with the user
-            image: imageUrl,
+            image: imagePathForDB,
           });
           
           console.log(newCharacter)
