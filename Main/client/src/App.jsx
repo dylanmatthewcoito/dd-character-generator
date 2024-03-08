@@ -16,9 +16,6 @@ function App() {
     <ApolloProvider client={client}>
       <div>
         <Navbar />
-        <Routes>
-          <Route path='/donate' element={<DonationForm />} />
-        </Routes>
         <Outlet />
       </div>
     </ApolloProvider>

@@ -68,7 +68,7 @@ const startApolloServer = async () => {
   // Define route for /donate
   app.get('/donate', (req, res) => {
     // Send the index.html file
-    res.sendFile(path.join(__dirname, '../client/dist/index.html'));
+    res.sendFile(path.join(__dirname, '../client/dist/', 'index.html'));
   });
 
   db.on('error', console.error.bind(console, 'MongoDB connection error:'));

@@ -4,7 +4,7 @@ import DonationForm from '../components/StripePayments';
 const DonatePage = () => {
   const handleDonate = async (amount) => {
     try {
-      // Here you would make a request to your backend server to create a payment intent with the specified amount
+      // Make a request to backend server to create a payment intent with the specified amount
       const response = await fetch('/create-payment-intent', {
         method: 'POST',
         headers: {
@@ -15,7 +15,7 @@ const DonatePage = () => {
 
       if (response.ok) {
         const data = await response.json();
-        // Handle the successful response from the server, maybe redirect to a success page or show a success message
+        // Handle the successful response from the server
         console.log('Payment intent created successfully:', data);
       } else {
         // Handle errors from the server
