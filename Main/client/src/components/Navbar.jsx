@@ -1,4 +1,3 @@
-// import React from 'react';
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
@@ -25,7 +24,7 @@ const Navbar = () => {
               <div className="line"></div>
               <div className="line"></div>
             </div>
-            <ul className={`navbar-nav ml-auto ${isOpen ? 'open' : ''}`}>
+            <ul className={`navbar-nav ${isOpen ? 'open' : ''}`}>
               <li className="nav-item">
                 <Link className="home red-link" to="/app/prompt" onClick={toggleMenu}>Home</Link>
               </li>

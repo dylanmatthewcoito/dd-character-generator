@@ -132,7 +132,7 @@ mutation CreateCharacter($username: String!, $characterInput: CharacterInput!) {
            <div className="spinner-border custom-spinner" role="status">
              <span className="visually-hidden">Loading</span>
            </div>
-           <span className="ms-3 loading-indicator">Loading...</span>
+           <span className="ms-3 loading-indicator">A Hero was born...</span>
          </div>
             ) : (
          
