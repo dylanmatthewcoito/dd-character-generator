@@ -68,6 +68,23 @@ body {
     font-size: 1.7vh;
 }
 
+.prompt-button {
+    padding: 10px 30px;
+    font-size: 25px;
+    font-weight: bold;
+    color: #ff0000;
+    background-color: #000000;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.generate-character {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
 .h2 {
     margin-bottom: 3vh;
 }

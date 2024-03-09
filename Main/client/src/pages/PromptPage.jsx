@@ -200,8 +200,8 @@ mutation CreateCharacter($username: String!, $characterInput: CharacterInput!) {
 
 
 
-            <div className="d-flex justify-content-center">
-                <button type="submit" className="btn btn-dark">Generate Character</button>
+            <div className="generate-character d-flex justify-content-center">
+                <button type="submit" className="btn btn-dark prompt-button">Generate Character</button>
             </div>
             </form>
             )}
