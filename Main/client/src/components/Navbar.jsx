@@ -29,10 +29,6 @@ const Navbar = () => {
               <div className={`line ${isOpen ? 'cross' : ''}`}></div>
               <div className={`line ${isOpen ? 'cross' : ''}`}></div>
               <div className={`line ${isOpen ? 'cross' : ''}`}></div>
-            {/* <div className="{`hamburger ${isOpen ? 'open' : ''}`}, " onClick={toggleMenu}>
-              <div className="line"></div>
-              <div className="line"></div>
-              <div className="line"></div> */}
             </div>
             <ul className={`navbar-nav ml-auto ${isOpen ? 'open' : ''}`}>
               <li className="nav-item">

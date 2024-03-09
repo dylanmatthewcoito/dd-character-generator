@@ -15,25 +15,47 @@ function AuthPage() {
 
     // Define the handleSignupSuccess function
     const handleSignupSuccess = () => {
-        navigate('/app/prompt'); 
+        navigate('/app/prompt');
     };
 
     const toggleMode = () => setIsLoginMode(!isLoginMode);
 
     return (
-        <div className="auth-container container py-5 mt-5">
+        // Left original code incase something breaks -DC
+        //
+        // <div className="auth-container container py-5 mt-5">
+        //     <nav className="navbar py-5 fixed-top">
+        //         <div className="container">
+        //             <div className="logo red">D&D Character Generator</div>
+        //         </div>
+        //     </nav>
+        //     <h1 className='d-flex justify-content-center'>{isLoginMode ? 'Login' : 'Sign up'}</h1>
+        //     {isLoginMode
+        //         ? <LoginForm onLoginSuccess={handleLoginSuccess} />
+        //         : <SignupForm onSignupSuccess={handleSignupSuccess} />}
+        //     <button className='btn btn-dark login-button' onClick={toggleMode}>
+        //          {isLoginMode ? 'Signup here' : 'Return to Log in'}
+        //     </button>
+        // </div>
+        <div className="auth-container container py-5">
             <nav className="navbar py-5 fixed-top">
                 <div className="container">
                     <div className="logo red">D&D Character Generator</div>
                 </div>
             </nav>
-            <h2 className='h2'>{isLoginMode ? 'Login' : 'Sign up'}</h2>
-            {isLoginMode
-                ? <LoginForm onLoginSuccess={handleLoginSuccess} />
-                : <SignupForm onSignupSuccess={handleSignupSuccess} />}
-            <button className='btn btn-dark my-3' onClick={toggleMode}>
-                 {isLoginMode ? 'Signup here' : 'Return to Log in'}
-            </button>
+            <div className="d-flex flex-column align-items-center mt-2">
+                <h1 className="mb-2">{isLoginMode ? 'Login' : 'Sign up'}</h1>
+                <div className="form-container">
+                    {isLoginMode ? (
+                        <LoginForm onLoginSuccess={handleLoginSuccess} />
+                    ) : (
+                        <SignupForm onSignupSuccess={handleSignupSuccess} />
+                    )}
+                </div>
+                <button className="btn btn-dark login-button mt-2" onClick={toggleMode}>
+                    {isLoginMode ? 'Signup here' : 'Return to Log in'}
+                </button>
+            </div>
         </div>
     );
 }

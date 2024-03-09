@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../utils/mutations';
 import Auth from '../utils/auth';
+import { BREAK } from 'graphql';
 
 function LoginForm({ onLoginSuccess }) {
     const [email, setEmail] = useState('');
@@ -45,34 +46,41 @@ function LoginForm({ onLoginSuccess }) {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <div className="mb-3">
-                <label htmlFor="login-email" className="form-label">Email</label>
-                <input
-                    id="login-email"
-                    type="email"
-                    className="form-control"
-                    required
-                    value={email}
-                    onChange={handleEmailChange}
-                />
-            </div>
-            <div className="mb-3">
-                <label htmlFor="login-password" className="form-label">Password</label>
-                <input
-                    id="login-password"
-                    type="password"
-                    className="form-control"
-                    required
-                    value={password}
-                    onChange={handlePasswordChange}
-                />
-            </div>
-            {error && <div className="alert alert-danger" role="alert">
-                Error logging in: {"Email or Password Incorrect"}
-            </div>}
-            <button type="submit" className="btn btn-dark">Log In</button>
-        </form>
+        <div className="login-form-container">
+            <form onSubmit={handleSubmit} className="login-form">
+                <div className="mb-4">
+                    <label htmlFor="login-email" className="form-label">Email</label>
+                    <input
+                        id="login-email"
+                        type="email"
+                        className="form-control"
+                        required
+                        value={email}
+                        onChange={handleEmailChange}
+                    />
+                </div>
+                <div className="mb-4">
+                    <label htmlFor="login-password" className="form-label">Password</label>
+                    <input
+                        id="login-password"
+                        type="password"
+                        className="form-control"
+                        required
+                        value={password}
+                        onChange={handlePasswordChange}
+                    />
+                </div>
+                {error && (
+                    <div className="alert alert-danger" role="alert">
+                        Error logging in: {"Email or Password Incorrect"}
+                    </div>
+                )}
+                <br></br>
+                <div className="text-center">
+                    <button type="submit" className="btn btn-dark login-button">Log In</button>
+                </div>
+            </form>
+        </div>
     );
 }
 
