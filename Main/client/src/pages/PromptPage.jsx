@@ -200,8 +200,8 @@ mutation CreateCharacter($username: String!, $characterInput: CharacterInput!) {
 
 
 
-            <div className="generate-character d-flex justify-content-center">
-                <button type="submit" className="btn btn-dark prompt-button">Generate Character</button>
+            <div className="d-flex justify-content-center">
+                <button type="submit" className="btn btn-dark">Generate Character</button>
             </div>
             </form>
             )}
@@ -213,17 +213,18 @@ mutation CreateCharacter($username: String!, $characterInput: CharacterInput!) {
         </div>
         </>
         ) : (
-        <div className="centered-div">
+            <div>
+
             <p className='mt-5'>
-              You need to be logged in to create a character. Please log in.
+              You need to be logged in to create a character! Please log in!
             </p>
-        <button 
-             className="btn btn-dark mt-3" 
-            onClick={() => window.location.assign('/')} // Redirect to the home page
+            <button 
+                 className="btn btn-dark mt-3" 
+                onClick={() => window.location.assign('/')} // Redirect to the home page
             >
              Go to Home Page
          </button>
-        </div>
+            </div>
           )}
 
         
