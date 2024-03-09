@@ -5,17 +5,22 @@
     font-style: normal;
 }
 
-body{
-    background-image: url('../src/assets/images/another-rough-old-and-worn-parchment-paper.webp'); /* Replace with the path to your image */
-    background-position: center; /* Center the image */
-    background-repeat: no-repeat; /* Do not repeat the image */
-    background-attachment: fixed; /* Fix the background image's position */
-    background-size: cover; /* Cover the entire area */
+body {
+    background-image: url('../src/assets/images/another-rough-old-and-worn-parchment-paper.webp');
+    /* Replace with the path to your image */
+    background-position: center;
+    /* Center the image */
+    background-repeat: no-repeat;
+    /* Do not repeat the image */
+    background-attachment: fixed;
+    /* Fix the background image's position */
+    background-size: cover;
+    /* Cover the entire area */
     min-height: 100vh;
 }
 
 .navbar {
-    background-color:rgb(0, 0, 0) ;
+    background-color: rgb(0, 0, 0);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -34,7 +39,7 @@ body{
     background-color: rgba(240, 240, 240, 0.411);
     border-color: black;
 }
-  
+
 .bolded {
     font-size: 2vh;
     font-weight: 600;
@@ -44,7 +49,8 @@ body{
     font-weight: 600;
 }
 
-.allocate-stats, .h2 {
+.allocate-stats,
+.h2 {
     font-size: 3vh;
     font-weight: 600;
 }
@@ -60,6 +66,23 @@ body{
 
 .prompt-stats {
     font-size: 1.7vh;
+}
+
+.prompt-button {
+    padding: 10px 30px;
+    font-size: 25px;
+    font-weight: bold;
+    color: #ff0000;
+    background-color: #000000;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.generate-character {
+    margin-top: 50px;
+    margin-bottom: 50px;
 }
 
 .h2 {
@@ -87,16 +110,21 @@ body{
     border-radius: 4px;
 }
 
-.character-card, .p {
+.character-card,
+.p {
     margin: 5px 0;
-    font-size: 1.2rem; /* Increase the font size */
-    font-weight: bold; /* Make the text bold */
+    font-size: 1.2rem;
+    /* Increase the font size */
+    font-weight: bold;
+    /* Make the text bold */
 }
 
 .stats p {
     margin: 5px 0;
-    font-size: 1.2rem; /* Increase the font size */
-    font-weight: bold; /* Make the text bold */
+    font-size: 1.2rem;
+    /* Increase the font size */
+    font-weight: bold;
+    /* Make the text bold */
 }
 
 .userProfileContainer {
@@ -111,7 +139,8 @@ body{
     text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #6b0000, 0 0 40px #6b0000, 0 0 50px #6b0000, 0 0 60px #6b0000, 0 0 70px #6b0000;
 }
 
-.red, .red-link {
+.red,
+.red-link {
     color: red;
 }
 
@@ -121,12 +150,14 @@ body{
 
 .profile-stats {
     font-weight: 600;
-    margin-right: 5px; /* Add some spacing between the icon and text */
+    margin-right: 5px;
+    /* Add some spacing between the icon and text */
 
 }
 
 .stat-icon {
-    margin-right: 5px; /* Add some spacing between the icon and text */
+    margin-right: 5px;
+    /* Add some spacing between the icon and text */
 }
 
 .profile-character-name {
@@ -135,7 +166,12 @@ body{
     margin-bottom: 20px;
 }
 
-/* Start https://www.cursors-4u.com */ * {cursor: url(https://cur.cursors-4u.net/sports/spo-1/spo15.cur), auto !important;} /* End https://www.cursors-4u.com */
+/* Start https://www.cursors-4u.com */
+* {
+    cursor: url(https://cur.cursors-4u.net/sports/spo-1/spo15.cur), auto !important;
+}
+
+/* End https://www.cursors-4u.com */
 
 
 /* CSS for hamburger menu */
@@ -143,7 +179,8 @@ body{
     cursor: pointer;
     position: fixed;
     top: 20px;
-    right: 10px; /* Adjusted from 20px to 10px */
+    right: 10px;
+    /* Adjusted from 20px to 10px */
     z-index: 1000;
 }
 
@@ -154,6 +191,19 @@ body{
     margin: 6px;
     transition: all 0.3s ease;
 }
+
+.hamburger.open .line:nth-child(1) {
+    transform: translateY(10.5px) rotate(45deg);
+}
+
+.hamburger.open .line:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.open .line:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+}
+
 
 .navbar-nav {
     position: fixed;
@@ -171,6 +221,7 @@ body{
 .navbar-nav.open {
     right: 0;
     margin-top: 25px;
+    display: block;
 }
 
 .nav-item {
@@ -179,4 +230,115 @@ body{
 
 .nav-item a {
     font-size: 1.5rem;
+}
+
+.centered-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+}
+
+.centered-div p {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.centered-div button {
+    padding: 15px 30px;
+    font-size: 25px;
+    font-weight: bold;
+    color: #ff0000;
+    background-color: #000000;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.centered-div button:hover {
+    background-color: #333333;
+}
+
+.login-form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40vh;
+}
+
+.login-form {
+    width: 600px;
+}
+
+.login-form .form-control {
+    width: 100%;
+}
+
+.login-button {
+    padding: 10px 30px;
+    font-size: 25px;
+    font-weight: bold;
+    color: #ff0000;
+    background-color: #000000;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.login-button:hover {
+    background-color: #333333;
+}
+
+.auth-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh;
+}
+
+.auth-container h1 {
+    margin-top: 1rem;
+}
+
+.form-container {
+    width: 100%;
+    max-width: 300px;
+}
+
+.signup-form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40vh;
+}
+
+.signup-form {
+    width: 300px;
+}
+
+.signup-form .form-control {
+    width: 100%;
+}
+
+.signup-button {
+    margin-top: 15px;
+    padding: 10px 30px;
+    font-size: 25px;
+    font-weight: bold;
+    color: #ff0000;
+    background-color: #000000;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.signup-button:hover {
+    background-color: #333333;
 }
