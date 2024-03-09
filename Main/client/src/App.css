@@ -268,7 +268,7 @@ body {
     color: #ff0000;
     background-color: #000000;
     border: none;
-    border-radius: 25px;
+    border-radius: 20px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
@@ -292,4 +292,36 @@ body {
 .form-container {
     width: 100%;
     max-width: 300px;
+}
+
+.signup-form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40vh;
+}
+
+.signup-form {
+    width: 300px;
+}
+
+.signup-form .form-control {
+    width: 100%;
+}
+
+.signup-button {
+    margin-top: 15px;
+    padding: 10px 30px;
+    font-size: 25px;
+    font-weight: bold;
+    color: #ff0000;
+    background-color: #000000;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.signup-button:hover {
+    background-color: #333333;
 }
