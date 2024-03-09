@@ -25,10 +25,10 @@ const Navbar = () => {
         <nav className="navbar py-4 fixed-top">
           <div className="container">
             <div className="logo red">D&D Character Generator</div>
-            <div className={`hamburger ${isOpen ? 'open' : ''}`} onClick={toggleMenu}>
-              <div className={`line ${isOpen ? 'cross' : ''}`}></div>
-              <div className={`line ${isOpen ? 'cross' : ''}`}></div>
-              <div className={`line ${isOpen ? 'cross' : ''}`}></div>
+            <div className="{`hamburger ${isOpen ? 'open' : ''}`}, " onClick={toggleMenu}>
+              <div className="line"></div>
+              <div className="line"></div>
+              <div className="line"></div>
             </div>
             <ul className={`navbar-nav ml-auto ${isOpen ? 'open' : ''}`}>
               <li className="nav-item">

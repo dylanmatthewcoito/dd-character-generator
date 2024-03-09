@@ -29,12 +29,12 @@ const SignupForm = () => {
             setUsername('');
             setEmail('');
             setPassword('');
-
+            
             if (typeof onSignupSuccess === 'function') {
                 Auth.login(data.login.token);
                 onSignupSuccess();
             }
-
+            
         } catch (error) {
             if (error.message.includes("E11000")) {
                 setCustomError('Email already exists');
@@ -46,90 +46,45 @@ const SignupForm = () => {
     };
 
     return (
-        // <form onSubmit={handleSubmit}>
-        //     <div className="mb-3">
-        //         <label htmlFor="signup-username" className="form-label">Username</label>
-        //         <input
-        //             id="signup-username"
-        //             type="text"
-        //             className="form-control"
-        //             required
-        //             value={username}
-        //             onChange={handleUsernameChange}
-        //         />
-        //     </div>
-        //     <div className="mb-3">
-        //         <label htmlFor="signup-email" className="form-label">Email</label>
-        //         <input
-        //             id="signup-email"
-        //             type="email"
-        //             className="form-control"
-        //             required
-        //             value={email}
-        //             onChange={handleEmailChange}
-        //         />
-        //     </div>
-        //     <div className="mb-3">
-        //         <label htmlFor="signup-password" className="form-label">Password</label>
-        //         <input
-        //             id="signup-password"
-        //             type="password"
-        //             className="form-control"
-        //             required
-        //             value={password}
-        //             onChange={handlePasswordChange}
-        //         />
-        //     </div>
-        //     {customError && <div className="alert alert-danger" role="alert">
-        //         Error: {customError}
-        //     </div>}
-        //     <button type="submit" className="btn btn-dark">Sign Up</button>
-        // </form>
-        <div className="signup-form-container">
-            <form onSubmit={handleSubmit} className="signup-form">
-                <div className="mb-3">
-                    <label htmlFor="signup-username" className="form-label">Username</label>
-                    <input
-                        id="signup-username"
-                        type="text"
-                        className="form-control"
-                        required
-                        value={username}
-                        onChange={handleUsernameChange}
-                    />
-                </div>
-                <div className="mb-3">
-                    <label htmlFor="signup-email" className="form-label">Email</label>
-                    <input
-                        id="signup-email"
-                        type="email"
-                        className="form-control"
-                        required
-                        value={email}
-                        onChange={handleEmailChange}
-                    />
-                </div>
-                <div className="mb-3">
-                    <label htmlFor="signup-password" className="form-label">Password</label>
-                    <input
-                        id="signup-password"
-                        type="password"
-                        className="form-control"
-                        required
-                        value={password}
-                        onChange={handlePasswordChange}
-                    />
-                </div>
-                {customError && (
-                    <div className="alert alert-danger" role="alert">
-                        Error: {customError}
-                    </div>
-                )}
-                <div className="text-center">
-                    <button type="submit" className="btn btn-dark signup-button">Sign Up</button>
-                </div>
-            </form>
-        </div>
+        <form onSubmit={handleSubmit}>
+            <div className="mb-3">
+                <label htmlFor="signup-username" className="form-label">Username</label>
+                <input
+                    id="signup-username"
+                    type="text"
+                    className="form-control"
+                    required
+                    value={username}
+                    onChange={handleUsernameChange}
+                />
+            </div>
+            <div className="mb-3">
+                <label htmlFor="signup-email" className="form-label">Email</label>
+                <input
+                    id="signup-email"
+                    type="email"
+                    className="form-control"
+                    required
+                    value={email}
+                    onChange={handleEmailChange}
+                />
+            </div>
+            <div className="mb-3">
+                <label htmlFor="signup-password" className="form-label">Password</label>
+                <input
+                    id="signup-password"
+                    type="password"
+                    className="form-control"
+                    required
+                    value={password}
+                    onChange={handlePasswordChange}
+                />
+            </div>
+            {customError && <div className="alert alert-danger" role="alert">
+                Error: {customError}
+            </div>}
+            <button type="submit" className="btn btn-dark">Sign Up</button>
+        </form>
     );
 };
 
