@@ -213,18 +213,17 @@ mutation CreateCharacter($username: String!, $characterInput: CharacterInput!) {
         </div>
         </>
         ) : (
-            <div>
-
+        <div className="centered-div">
             <p className='mt-5'>
-              You need to be logged in to create a character! Please log in!
+              You need to be logged in to create a character. Please log in.
             </p>
-            <button 
-                 className="btn btn-dark mt-3" 
-                onClick={() => window.location.assign('/')} // Redirect to the home page
+        <button 
+             className="btn btn-dark mt-3" 
+            onClick={() => window.location.assign('/')} // Redirect to the home page
             >
              Go to Home Page
          </button>
-            </div>
+        </div>
           )}
 
         
