@@ -131,13 +131,13 @@ const PromptPage = ({ onSubmit }) => {
             {isLoading ? (
               <div
                 className="d-flex justify-content-center align-items-center"
-                style={{ height: "100vh" }}
+                style={{ height: "70vh" }}
               >
-                <div className="spinner-border custom-spinner" role="status">
-                  <span className="visually-hidden">Loading</span>
+                <div role="status">
+                <span className="loader m-4"></span>
                 </div>
                 <span className="ms-3 loading-indicator">
-                  A Hero was born...
+                  Brewing your Champion
                 </span>
               </div>
             ) : (
