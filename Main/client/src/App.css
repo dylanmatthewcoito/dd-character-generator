@@ -257,6 +257,178 @@ body {
   }
 }
 
+:root {
+  /* --base-size: 10rem;
+  --base-height: 8.65rem; */
+  --base-size: 10vw;
+  --base-height: 8.65vw;
+  /* --base-size: 30vw;
+  --base-height: 25.95vw; */
+  /* --base-size: 5vw;
+  --base-height: 4.325vw; */
+}
+@media screen and (max-width: 338px ) {
+  .d20body {
+    margin-top: 5vh;
+  }
+}
+@media screen and (min-width: 450px ) {
+  .d20body {
+    margin-top: 3vh;
+  }
+}
+@media screen and (min-width: 700px ) {
+  .d20body {
+    margin-top: 3vh;
+  --base-size: 5vw;
+  --base-height: 4.325vw;
+  }
+}
+
+.d20body {
+  font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto,
+    Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+
+.d20 {
+  position: relative;
+  width: var(--base-size);
+  height: calc(var(--base-size) * .845);
+  transform-style: preserve-3d;
+}
+
+@media screen and (prefers-reduced-motion: no-preference) {
+  .d20 {
+    animation: rotate 50s infinite linear;
+  }
+}
+
+.d20, .d20 > * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.d20 > * {
+  width: var(--base-size);
+  height: var(--base-height);
+  position: absolute;
+/*   opacity: 0.8; */
+  clip-path: polygon(0 0, 50% 100%, 100% 0);
+  transform-origin: top;
+  background-color: #000;
+  background: linear-gradient(180deg, #fff3 0, #fff3 0%, #0000 2%, #0000 100%),
+    linear-gradient(300deg, #fff3 0, #fff3 32.5%, #0000 35%, #00000021 100%),
+    linear-gradient(60deg, #fff3 0, #fff3 32.5%, #0000 35%, #0000 100%),
+    linear-gradient(0deg, rgba(204, 0, 0, 0.8) 0, rgba(204, 0, 0, 0.8) 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: calc(var(--base-size) * .4);
+  color: #000000;
+
+  padding-bottom: calc(var(--base-size) * .3);
+  --d: calc(var(--base-size) * .69);
+}
+
+/* Grouped faces so opposites are together. */
+/* They should add up to 21. */
+
+.d20 > *:nth-child(1) {
+  transform: rotateY(0.7turn) translateZ(calc(var(--d) * -1)) rotateX(127deg);
+}
+.d20 > *:nth-child(20) {
+  bottom: calc(var(--base-height) * -1);
+  transform: rotateY(0.7turn) translateZ(var(--d)) rotateX(307deg);
+}
+
+.d20 > *:nth-child(2) {
+  transform: rotateY(0.6turn) translateZ(var(--d)) rotateX(11deg);
+}
+.d20 > *:nth-child(19) {
+  bottom: calc(var(--base-height) * -1);
+  transform: rotateY(0.6turn) translateZ(calc(var(--d) * -1)) rotateX(191deg);
+}
+
+.d20 > *:nth-child(3) {
+  bottom: calc(var(--base-height) * -1);
+  transform: rotateY(1turn) translateZ(calc(var(--d) * -1)) rotateX(191deg);
+}
+.d20 > *:nth-child(18) {
+  transform: rotateY(1turn) translateZ(var(--d)) rotateX(11deg);
+}
+
+.d20 > *:nth-child(4) {
+  transform: rotateY(0.3turn) translateZ(calc(var(--d) * -1)) rotateX(127deg);
+}
+.d20 > *:nth-child(17) {
+  bottom: calc(var(--base-height) * -1);
+  transform: rotateY(0.3turn) translateZ(var(--d)) rotateX(307deg);
+}
+
+.d20 > *:nth-child(5) {
+  transform: rotateY(0.8turn) translateZ(var(--d)) rotateX(11deg);
+}
+.d20 > *:nth-child(16) {
+  bottom: calc(var(--base-height) * -1);
+  transform: rotateY(0.8turn) translateZ(calc(var(--d) * -1)) rotateX(191deg);
+}
+
+.d20 > *:nth-child(6) {
+  transform: rotateY(0.9turn) translateZ(calc(var(--d) * -1)) rotateX(127deg);
+}
+.d20 > *:nth-child(15) {
+  bottom: calc(var(--base-height) * -1);
+  transform: rotateY(0.9turn) translateZ(var(--d)) rotateX(307deg);
+}
+
+.d20 > *:nth-child(7) {
+  bottom: calc(var(--base-height) * -1);
+  transform: rotateY(0.2turn) translateZ(calc(var(--d) * -1)) rotateX(191deg);
+}
+.d20 > *:nth-child(14) {
+  transform: rotateY(0.2turn) translateZ(var(--d)) rotateX(11deg);
+}
+
+.d20 > *:nth-child(8) {
+  transform: rotateY(0.1turn) translateZ(calc(var(--d) * -1)) rotateX(127deg);
+}
+.d20 > *:nth-child(13) {
+  bottom: calc(var(--base-height) * -1);
+  transform: rotateY(0.1turn) translateZ(var(--d)) rotateX(307deg);
+}
+
+.d20 > *:nth-child(9) {
+  transform: rotateY(0.4turn) translateZ(var(--d)) rotateX(11deg);
+}
+.d20 > *:nth-child(12) {
+  bottom: calc(var(--base-height) * -1);
+  transform: rotateY(0.4turn) translateZ(calc(var(--d) * -1)) rotateX(191deg);
+}
+
+.d20 > *:nth-child(10) {
+  transform: rotateY(.5turn) translateZ(calc(var(--d) * -1)) rotateX(127deg);
+}
+.d20 > *:nth-child(11) {
+  bottom: calc(var(--base-height) * -1);
+  transform: rotateY(.5turn) translateZ(var(--d)) rotateX(307deg);
+}
+
+
+@keyframes rotate {
+  from {
+    transform: rotateX(0deg) rotateY(360deg) rotateZ(360deg);
+  }
+  to {
+    transform: rotateX(360deg) rotateY(0deg) rotateZ(-360deg);
+  }
+}
+
 /* Start https://www.cursors-4u.com */
 * {
   cursor: url(https://cur.cursors-4u.net/sports/spo-1/spo15.cur), auto !important;
