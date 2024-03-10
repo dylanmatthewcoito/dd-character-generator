@@ -1,3 +1,4 @@
+require('dotenv/config')
 const express = require('express');
 const { ApolloServer } = require('@apollo/server');
 const { expressMiddleware } = require('@apollo/server/express4');
@@ -36,24 +37,37 @@ const startApolloServer = async () => {
   app.use(express.json());
   app.use('/graphql', expressMiddleware(server));
 
-  // Route to create a payment intent
-  app.post('/create-payment-intent', async (req, res) => {
-    const { amount } = req.body;
+  // Route to create a checkout session (handles payment on Stripe's servers)
+  app.post('/api/checkout-session', async (req, res) => {
+    console.log(req.headers)
 
-    try {
-      // Create a payment intent with the specified amount
-      const paymentIntent = await stripe.paymentIntents.create({
-        amount: amount * 100, // Convert amount to cents
-        currency: 'usd',
-        // Can add more options later: like metadata, description, etc. here
-      });
-    
-      // Send client secret back to the client along with success message
-      res.json({ success: true, message: 'Payment intent created successfully💳', clientSecret: paymentIntent.client_secret });
-    } catch (error) {
-      console.error('Error creating payment intent:', error);
-      res.status(500).json({ success: false, error: 'Failed to create payment intent❌' });
-    }
+    // Create a product named "donation"
+    const donation = await stripe.products.create({
+      name: 'Donation',
+    });
+
+    // Create a price object to set currency & enable custom_unit_amount option to allow users to choose amount to donate
+    const price = await stripe.prices.create({
+      currency: 'usd',
+      custom_unit_amount: {
+        enabled: true,
+      },
+      product: donation.id,
+    });
+
+    const session = await stripe.checkout.sessions.create({
+      cancel_url: `http://${req.get('origin')}/app/donate`,
+      line_items: [
+        {
+          price: price.id,
+          quantity: 1,
+        },
+      ],
+      mode: 'payment',
+      success_url: `http://${req.get('origin')}/app/donate`,
+    });
+    res.status(201).json(session.url);
+    console.log(session)
   });
 
   // if we're in production, serve client/dist as static assets
