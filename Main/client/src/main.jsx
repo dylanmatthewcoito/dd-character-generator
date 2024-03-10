@@ -1,15 +1,15 @@
-import ReactDOM from 'react-dom/client';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import App from './App';
-import AuthPage from './pages/AuthPage'; // Import the AuthPage
-import PromptPage from './pages/PromptPage';
-import CharSheetPage from './pages/CharSheetPage';
-import ProfilePageComponent from './pages/ProfilePage'
-import DonatePage from './pages/DonatePage';
+import ReactDOM from "react-dom/client";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import App from "./App";
+import AuthPage from "./pages/AuthPage"; // Import the AuthPage
+import PromptPage from "./pages/PromptPage";
+import CharSheetPage from "./pages/CharSheetPage";
+import ProfilePageComponent from "./pages/ProfilePage";
+import DonatePage from "./pages/DonatePage";
 
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     element: <App />, // App is now the root element for all routes
     children: [
       // AuthPage is now a child route of App
@@ -18,23 +18,23 @@ const router = createBrowserRouter([
         element: <AuthPage />,
       },
       {
-        path: 'app',
+        path: "app",
         children: [
           {
-            path: 'prompt',
+            path: "prompt",
             element: <PromptPage />,
           },
           {
-            path: 'charsheet',
+            path: "charsheet",
             element: <CharSheetPage />,
           },
           {
-            path: 'profile',
-            element: <ProfilePageComponent/>,
+            path: "profile",
+            element: <ProfilePageComponent />,
           },
           {
-            path: 'donate',
-            element: <DonatePage/>,
+            path: "donate",
+            element: <DonatePage />,
           },
           // other routes as needed
         ],
@@ -44,6 +44,6 @@ const router = createBrowserRouter([
   // More routes or redirects
 ]);
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById("root")).render(
   <RouterProvider router={router} />
 );
