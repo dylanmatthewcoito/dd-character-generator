@@ -1,186 +1,192 @@
 #root {
-    padding-top: 80px;
-    font-family: "MedievalSharp", cursive;
-    font-weight: 500;
-    font-style: normal;
+  padding-top: 80px;
+  font-family: "MedievalSharp", cursive;
+  font-weight: 500;
+  font-style: normal;
 }
 
-body, html {
-    height: 100%; /* Ensure the html and body are full height */
-    margin: 0; /* Reset default margin */
+body,
+html {
+  height: 100%; /* Ensure the html and body are full height */
+  margin: 0; /* Reset default margin */
 }
 
-body{
-    background-image: url('../src/assets/images/another-rough-old-and-worn-parchment-paper.webp'); /* Replace with the path to your image */
-    background-position: center; /* Center the image */
-    background-repeat: no-repeat; /* Do not repeat the image */
-    background-attachment: fixed; /* Fix the background image's position */
-    background-size: cover; /* Cover the entire area */
+body {
+  background-image: url("../src/assets/images/another-rough-old-and-worn-parchment-paper.webp"); /* Replace with the path to your image */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-attachment: fixed; /* Fix the background image's position */
+  background-size: cover; /* Cover the entire area */
 }
 
 .navbar {
-    background-color:rgb(0, 0, 0) ;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem;
+  background-color: rgb(0, 0, 0);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
 }
 
 .logo {
-    font-size: clamp(1.5rem, 5vw, 2rem);
+  font-size: clamp(1.5rem, 5vw, 2rem);
 }
 
 .loading-indicator {
-    font-size: 5vh;
+  font-size: 5vh;
 }
 
 .form-control {
-    background-color: rgba(240, 240, 240, 0.411);
-    border-color: black;
+  background-color: rgba(240, 240, 240, 0.411);
+  border-color: black;
 }
-  
+
 .bolded {
-    font-size: 2vh;
-    font-weight: 600;
+  font-size: 2vh;
+  font-weight: 600;
 }
 
 .char-name {
-    font-weight: 600;
+  font-weight: 600;
 }
 
-.allocate-stats, .h2 {
-    font-size: 3vh;
-    font-weight: 600;
+.allocate-stats,
+.h2 {
+  font-size: 3vh;
+  font-weight: 600;
 }
 
 .total-points-line {
-    font-size: 2vh;
-    margin-top: 1rem;
+  font-size: 2vh;
+  margin-top: 1rem;
 }
 
 .form-label {
-    font-size: 2vh;
+  font-size: 2vh;
 }
 
 .prompt-stats {
-    font-size: 1.7vh;
+  font-size: 1.7vh;
 }
 
 .h2 {
-    margin-bottom: 3vh;
+  margin-bottom: 3vh;
 }
 
 .character-cards {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
 }
 
 .character-card {
-    border: 1px solid #000000;
-    padding: 17px;
-    border-radius: 8px;
-    width: 300px;
-    background-color: #8f650a69;
+  border: 1px solid #000000;
+  padding: 17px;
+  border-radius: 8px;
+  width: 300px;
+  background-color: #8f650a69;
 }
 
 .character-card img {
-    width: 100%;
-    height: auto;
-    border-radius: 4px;
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
 }
 
-.character-card, .p {
-    margin: 5px 0;
-    font-size: 1.2rem; /* Increase the font size */
-    font-weight: bold; /* Make the text bold */
+.character-card,
+.p {
+  margin: 5px 0;
+  font-size: 1.2rem; /* Increase the font size */
+  font-weight: bold; /* Make the text bold */
 }
 
 .stats p {
-    margin: 5px 0;
-    font-size: 1.2rem; /* Increase the font size */
-    font-weight: bold; /* Make the text bold */
+  margin: 5px 0;
+  font-size: 1.2rem; /* Increase the font size */
+  font-weight: bold; /* Make the text bold */
 }
 
 .userProfileContainer {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 50px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
 }
 
 .userProfileName {
-    font-size: 3vh;
-    font-weight: 700;
-    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #6b0000, 0 0 40px #6b0000, 0 0 50px #6b0000, 0 0 60px #6b0000, 0 0 70px #6b0000;
+  font-size: 3vh;
+  font-weight: 700;
+  text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #6b0000, 0 0 40px #6b0000,
+    0 0 50px #6b0000, 0 0 60px #6b0000, 0 0 70px #6b0000;
 }
 
-.red, .red-link {
-    color: red;
+.red,
+.red-link {
+  color: red;
 }
 
 .red-link:hover {
-    color: rgb(255, 163, 135);
+  color: rgb(255, 163, 135);
 }
 
 .profile-stats {
-    font-weight: 600;
-    margin-right: 5px; /* Add some spacing between the icon and text */
-
+  font-weight: 600;
+  margin-right: 5px; /* Add some spacing between the icon and text */
 }
 
 .stat-icon {
-    margin-right: 5px; /* Add some spacing between the icon and text */
+  margin-right: 5px; /* Add some spacing between the icon and text */
 }
 
 .profile-character-name {
-    font-weight: 700;
-    text-align: center;
-    margin-bottom: 20px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
-/* Start https://www.cursors-4u.com */ * {cursor: url(https://cur.cursors-4u.net/sports/spo-1/spo15.cur), auto !important;} /* End https://www.cursors-4u.com */
-
+/* Start https://www.cursors-4u.com */
+* {
+  cursor: url(https://cur.cursors-4u.net/sports/spo-1/spo15.cur), auto !important;
+} /* End https://www.cursors-4u.com */
 
 /* CSS for hamburger menu */
 .hamburger {
-    cursor: pointer;
-    position: fixed;
-    top: 20px;
-    right: 10px; /* Adjusted from 20px to 10px */
-    z-index: 1000;
+  cursor: pointer;
+  position: fixed;
+  top: 20px;
+  right: 10px; /* Adjusted from 20px to 10px */
+  z-index: 1000;
 }
 
 .line {
-    width: 30px;
-    height: 4px;
-    background-color: red;
-    margin: 6px;
-    transition: all 0.3s ease;
+  width: 30px;
+  height: 4px;
+  background-color: red;
+  margin: 6px;
+  transition: all 0.3s ease;
 }
 
 .navbar-nav {
-    position: fixed;
-    top: 0;
-    right: -300px;
-    width: 300px;
-    height: 100vh;
-    background-color: rgb(0, 0, 0);
-    padding: 2rem;
-    padding-top: 70px;
-    transition: right 0.3s ease;
-    z-index: 999;
+  position: fixed;
+  top: 0;
+  right: -300px;
+  width: 300px;
+  height: 100vh;
+  background-color: rgb(0, 0, 0);
+  padding: 2rem;
+  padding-top: 70px;
+  transition: right 0.3s ease;
+  z-index: 999;
 }
 
 .navbar-nav.open {
-    right: 0;
-    margin-top: 25px;
+  right: 0;
+  margin-top: 25px;
 }
 
 .nav-item {
-    margin-bottom: 1rem;
+  margin-bottom: 1rem;
 }
 
 .nav-item a {
-    font-size: 1.5rem;
+  font-size: 1.5rem;
 }
