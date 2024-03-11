@@ -37,7 +37,7 @@ function ProfilePageComponent() {
 
   return (
     <div>
-      <div className="body-background pt-5 m-5">
+      <div className="body-background pb-5 m-5">
         <div className="userProfileContainer">
           <h2 className="userProfileName">{storedUsername}'s Characters</h2>
         </div>
