@@ -1,19 +1,22 @@
 import React from "react";
 import { useQuery } from "@apollo/client";
 import { GET_USER_CHARACTERS } from "../utils/queries";
-import Auth from "../utils/auth";
 
 const renderHomeButton = () => (
-  <div>
-    <p className="mt-5">
-      You need to be logged in to create a character! Please log in!
-    </p>
-    <button
-      className="btn btn-dark mt-3"
-      onClick={() => window.location.assign("/")} // Redirect to the home page
-    >
-      Return to Log In
-    </button>
+  <div className="container">
+    <div className="row justify-content-center" >
+      <div class="col-md-6 text-center"> 
+        <p className="mt-5 fs-2">
+          You are not logged in! Please Log In to view your characters!
+        </p>
+        <button
+          className="btn btn-dark mt-3"
+          onClick={() => window.location.assign("/")} // Redirect to the home page
+        >
+          Return to Log In
+        </button>
+      </div>
+    </div>
   </div>
 );
 
@@ -51,11 +54,11 @@ function ProfilePageComponent() {
                   <span className="profile-stats">Race:</span> {race}
                 </p>
                 <p>
-                  <span className="profile-stats">Backstory:</span> {backstory}
+                  <span className="profile-stats">Description:</span> {backstory}
                 </p>
                 <div className="stats">
                   <p>
-                    <span className="profile-stats">Strength:</span>{" "}
+                    <span className="profile-stats b">Strength:</span>{" "}
                     {stat.strength}
                   </p>
                   <p>

@@ -21,10 +21,10 @@ function AuthPage() {
   const toggleMode = () => setIsLoginMode(!isLoginMode);
 
   return (
-    <div className="auth-container container py-5 mt-5">
-      <nav className="navbar py-5 fixed-top">
+    <div className="auth-container container py-5 mt-3">
+      <nav className="navbar py-4 fixed-top">
         <div className="container">
-          <div className="logo red">D&D Character Generator</div>
+          <div className="logo red">Roles & Renders</div>
         </div>
       </nav>
       <div className = "d20body">
