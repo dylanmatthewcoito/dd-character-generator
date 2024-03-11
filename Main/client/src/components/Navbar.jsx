@@ -26,7 +26,7 @@ const Navbar = () => {
       {!isAuthPage && ( // Only render the navigation links if NOT on the AuthPage
         <nav className="navbar py-4 fixed-top">
           <div className="container">
-            <div className="logo red">D&D Character Generator</div>
+            <div className="logo red">Roles & Renders</div>
             <div
               className="{`hamburger ${isOpen ? 'open' : ''}`}, "
               onClick={toggleMenu}
@@ -42,7 +42,7 @@ const Navbar = () => {
                   to="/app/prompt"
                   onClick={toggleMenu}
                 >
-                  Home
+                  Create a Character
                 </Link>
               </li>
               <li className="nav-item">

@@ -134,7 +134,7 @@ const PromptPage = ({ onSubmit }) => {
                 style={{ height: "70vh" }}
               >
                 <div role="status">
-                <span className="loader m-4"></span>
+                  <span className="loader m-4"></span>
                 </div>
                 <span className="ms-3 loading-indicator">
                   Brewing your Champion
@@ -244,16 +244,20 @@ const PromptPage = ({ onSubmit }) => {
           </div>
         </>
       ) : (
-        <div>
-          <p className="mt-5">
-            You need to be logged in to create a character! Please log in!
-          </p>
-          <button
-            className="btn btn-dark mt-3"
-            onClick={() => window.location.assign("/")} // Redirect to the home page
-          >
-            Return to Log in
-          </button>
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-md-6 text-center">
+              <p className="mt-5 fs-2">
+               You are not logged in! Please Log in to create a character!
+              </p>
+              <button
+                className="btn btn-dark mt-3"
+                onClick={() => window.location.assign("/")} // Redirect to the home page
+              >
+                Return to Log in
+              </button>
+            </div>
+          </div>
         </div>
       )}
     </div>
