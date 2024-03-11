@@ -58,10 +58,13 @@ For testing purposes you should also download mongodb compass amd connect to you
 
 ## Screenshots
 
-![alt text](image-2.png)
-![alt text](image.png) 
-![alt text](image-3.png)
-![alt text](image-1.png)
+![Login page image](Main/client/src/assets/images/loginPage.png)
+
+![Prompt page image](Main/client/src/assets/images/promptPage.png)
+
+![Loading page image](Main/client/src/assets/images/loadingPage.png)
+
+![Character page image](Main/client/src/assets/images/charPage.png)
 
 ## Credits
 
