@@ -39,7 +39,7 @@ function ProfilePageComponent() {
     <div>
       <div className="body-background mt-4">
         <div className="userProfileContainer">
-          <h2 className="userProfileName m-0">{storedUsername}'s Characters</h2>
+          <h2 className="userProfileName mt-4">{storedUsername}'s Characters</h2>
         </div>
         <div className="character-cards">
           {data?.getUserCharacters.map(
