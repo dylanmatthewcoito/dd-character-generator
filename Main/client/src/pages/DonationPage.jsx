@@ -1,21 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import DonationForm from '../components/DonationForm';
 
 const DonationPage = () => {
-  // useEffect(() => {
-  //   const initializeStripe = async () => {
-  //     try {
-  //       const stripe = await loadStripe('pk_live_51OrAfGGM9zTImtWNr7N8cL5DJGaqZEyHuEWIpSoLnuEI8pfM3Kjj4iP0PJsRmqfP1HEKprgyrHKRZqAXlPp0dA3R00Cil2ozx1');
-  //       const elements = stripe.elements();
-  //       const cardElement = elements.create('card');
-  //       cardElement.mount('#card-element');
-  //     } catch (error) {
-  //       console.error('Error initializing Stripe:', error);
-  //     }
-  //   };
-  //   initializeStripe();
-  // }, []);
-
   const handleDonate = async (amount) => {
     try {
       // Make a request to backend server to create a payment intent with the specified amount

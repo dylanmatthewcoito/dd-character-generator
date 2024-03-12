@@ -1,110 +1,431 @@
 #root {
-    padding-top: 80px;
-    font-family: "MedievalSharp", cursive;
-    font-weight: 500;
-    font-style: normal;
+  padding-top: 80px;
+  font-family: "MedievalSharp", cursive;
+  font-weight: 500;
+  font-style: normal;
 }
 
-body{
-    background-image: url('../src/assets/images/another-rough-old-and-worn-parchment-paper.webp'); /* Replace with the path to your image */
-    background-position: center; /* Center the image */
-    background-repeat: no-repeat; /* Do not repeat the image */
-    background-attachment: fixed; /* Fix the background image's position */
-    background-size: cover; /* Cover the entire area */
-    min-height: 100vh;
+body,
+html {
+  height: 100%; /* Ensure the html and body are full height */
+  margin: 0; /* Reset default margin */
+}
+
+body {
+  background-image: url("../src/assets/images/another-rough-old-and-worn-parchment-paper.webp"); /* Replace with the path to your image */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-attachment: fixed; /* Fix the background image's position */
+  background-size: cover; /* Cover the entire area */
 }
 
 .navbar {
-    background-color:rgb(0, 0, 0);
-    height: 10px;
+  background-color: rgb(0, 0, 0);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
 }
 
 .logo {
-    font-size: clamp(1.5rem, 5vw, 2rem);
+  font-size: clamp(1.5rem, 5vw, 2rem);
 }
 
-
 .loading-indicator {
-    font-size: 5vh;
+  font-size: 5vh;
 }
 
 .form-control {
-    background-color: rgba(240, 240, 240, 0.411);
-    border-color: black;
+  background-color: rgba(240, 240, 240, 0.411);
+  border-color: black;
 }
-  
+
 .bolded {
-    font-size: 2vh;
-    font-weight: 600;
+  font-size: 2vh;
+  font-weight: 600;
 }
 
 .char-name {
-    font-weight: 600;
+  font-weight: 600;
 }
 
-.allocate-stats, .h2 {
-    font-size: 3vh;
-    font-weight: 600;
+.allocate-stats,
+.h2 {
+  font-size: 3vh;
+  font-weight: 600;
 }
 
 .total-points-line {
-    font-size: 2vh;
-    margin-top: 1rem;
+  font-size: 2vh;
+  margin-top: 1rem;
 }
+
 .form-label {
-    font-size: 2vh;
+  font-size: 2vh;
 }
 
 .prompt-stats {
-    font-size: 1.7vh;
+  font-size: 1.7vh;
 }
 
 .h2 {
-    margin-bottom: 3vh;
+  margin-bottom: 3vh;
 }
 
 .character-cards {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
 }
 
 .character-card {
-    border: 1px solid #000000;
-    padding: 20px;
-    border-radius: 8px;
-    width: 250px;
-    background-color: #8f650a69;
+  border: 1px solid #000000;
+  padding: 17px;
+  border-radius: 8px;
+  width: 300px;
+  background-color: #8f650a69;
 }
 
 .character-card img {
-    width: 100%;
-    height: auto;
-    border-radius: 4px;
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
 }
 
+
 .stats p {
-    margin: 5px 0;
+  margin: 1px 0;
+}
+
+.userProfileContainer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
 }
 
 .userProfileName {
-    font-size: 3vh;
-    font-weight: 700;
+  font-size: 3vh;
+  font-weight: 700;
+  text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #6b0000, 0 0 40px #6b0000,
+    0 0 50px #6b0000, 0 0 60px #6b0000, 0 0 70px #6b0000;
 }
-.red ,.red-link {
-    color: red;
+
+.red,
+.red-link {
+  color: red;
 }
 
 .red-link:hover {
-    color: rgb(255, 163, 135);
+  color: rgb(255, 163, 135);
 }
 
 .profile-stats {
-    font-weight: 600;
+  font-weight: 600;
+  margin-right: 5px; /* Add some spacing between the icon and text */
+}
+
+.stat-icon {
+  margin-right: 5px; /* Add some spacing between the icon and text */
 }
 
 .profile-character-name {
-    font-weight: 700;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 20px;
 }
-/* Start https://www.cursors-4u.com */ * {cursor: url(https://cur.cursors-4u.net/sports/spo-1/spo15.cur), auto !important;} /* End https://www.cursors-4u.com */
+
+
+/* CSS for hamburger menu */
+.hamburger {
+  cursor: pointer;
+  position: fixed;
+  top: 20px;
+  right: 10px; /* Adjusted from 20px to 10px */
+  z-index: 1000;
+}
+
+.line {
+  width: 30px;
+  height: 4px;
+  background-color: red;
+  margin: 6px;
+  transition: all 0.3s ease;
+}
+
+.navbar-nav {
+  position: fixed;
+  top: 0;
+  right: -300px;
+  width: 300px;
+  height: 100vh;
+  background-color: rgb(0, 0, 0);
+  padding: 2rem;
+  padding-top: 70px;
+  transition: right 0.3s ease;
+  z-index: 999;
+}
+
+.navbar-nav.open {
+  right: 0;
+  margin-top: 25px;
+}
+
+.nav-item {
+  margin-bottom: 1rem;
+}
+
+.nav-item a {
+  font-size: 1.5rem;
+}
+
+.thick {
+  font-weight: 700;
+}
+
+.loader {
+  width: 24px;
+  height: 80px;
+  display: block;
+  margin: 35px auto 0;
+  border: 1px solid #000000;
+  border-radius: 0 0 50px 50px;
+  position: relative;
+  box-shadow: 0px 0px #FF3D00 inset;
+  background-image: linear-gradient(#FF3D00 100px, transparent 0);
+  background-position: 0px 0px;
+  background-size: 22px 80px;
+  background-repeat: no-repeat;
+  box-sizing: border-box;
+  animation: animloader 6s linear infinite;
+}
+.loader::after {
+  content: '';  
+  box-sizing: border-box;
+  top: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  position: absolute;
+  border: 1px solid #000000;
+  border-radius: 50%;
+  width: 28px;
+  height: 6px;
+}
+.loader::before {
+  content: '';  
+  box-sizing: border-box;
+  left: 0;
+  bottom: -4px;
+  border-radius: 50%;
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  animation: animloader1 6s linear infinite;
+}
+
+@keyframes animloader {
+  0% {
+    background-position: 0px 80px;
+  }
+  100% {
+    background-position: 0px 0px;
+  }
+}
+
+@keyframes animloader1 {
+  0% {
+    box-shadow: 4px -10px rgba(255, 255, 255, 0), 6px 0px rgba(255, 255, 255, 0), 8px -15px rgba(255, 255, 255, 0), 12px 0px rgba(255, 255, 255, 0);
+  }
+  20% {
+    box-shadow: 4px -20px rgba(255, 255, 255, 0), 8px -10px rgba(255, 255, 255, 0), 10px -30px rgba(255, 255, 255, 0.5), 15px -5px rgba(255, 255, 255, 0);
+  }
+  40% {
+    box-shadow: 2px -40px rgba(255, 255, 255, 0.5), 8px -30px rgba(255, 255, 255, 0.4), 8px -60px rgba(255, 255, 255, 0.5), 12px -15px rgba(255, 255, 255, 0.5);
+  }
+  60% {
+    box-shadow: 4px -60px rgba(255, 255, 255, 0.5), 6px -50px rgba(255, 255, 255, 0.4), 10px -90px rgba(255, 255, 255, 0.5), 15px -25px rgba(255, 255, 255, 0.5);
+  }
+  80% {
+    box-shadow: 2px -80px rgba(255, 255, 255, 0.5), 4px -70px rgba(255, 255, 255, 0.4), 8px -120px rgba(255, 255, 255, 0), 12px -35px rgba(255, 255, 255, 0.5);
+  }
+  100% {
+    box-shadow: 4px -100px rgba(255, 255, 255, 0), 8px -90px rgba(255, 255, 255, 0), 10px -120px rgba(255, 255, 255, 0), 15px -45px rgba(255, 255, 255, 0);
+  }
+}
+
+:root {
+  /* --base-size: 10rem;
+  --base-height: 8.65rem; */
+  --base-size: 10vw;
+  --base-height: 8.65vw;
+  /* --base-size: 30vw;
+  --base-height: 25.95vw; */
+  /* --base-size: 5vw;
+  --base-height: 4.325vw; */
+}
+@media screen and (max-width: 338px ) {
+  .d20body {
+    margin-top: 5vh;
+  }
+}
+@media screen and (min-width: 450px ) {
+  .d20body {
+    margin-top: 3vh;
+  }
+}
+@media screen and (min-width: 700px ) {
+  .d20body {
+    margin-top: 3vh;
+  --base-size: 5vw;
+  --base-height: 4.325vw;
+  }
+}
+
+.d20body {
+  font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto,
+    Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+
+.d20 {
+  position: relative;
+  width: var(--base-size);
+  height: calc(var(--base-size) * .845);
+  transform-style: preserve-3d;
+}
+
+@media screen and (prefers-reduced-motion: no-preference) {
+  .d20 {
+    animation: rotate 50s infinite linear;
+  }
+}
+
+.d20, .d20 > * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.d20 > * {
+  width: var(--base-size);
+  height: var(--base-height);
+  position: absolute;
+/*   opacity: 0.8; */
+  clip-path: polygon(0 0, 50% 100%, 100% 0);
+  transform-origin: top;
+  background-color: #000;
+  background: linear-gradient(180deg, #fff3 0, #fff3 0%, #0000 2%, #0000 100%),
+    linear-gradient(300deg, #fff3 0, #fff3 32.5%, #0000 35%, #00000021 100%),
+    linear-gradient(60deg, #fff3 0, #fff3 32.5%, #0000 35%, #0000 100%),
+    linear-gradient(0deg, rgba(204, 0, 0, 0.8) 0, rgba(204, 0, 0, 0.8) 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: calc(var(--base-size) * .4);
+  color: #000000;
+
+  padding-bottom: calc(var(--base-size) * .3);
+  --d: calc(var(--base-size) * .69);
+}
+
+/* Grouped faces so opposites are together. */
+/* They should add up to 21. */
+
+.d20 > *:nth-child(1) {
+  transform: rotateY(0.7turn) translateZ(calc(var(--d) * -1)) rotateX(127deg);
+}
+.d20 > *:nth-child(20) {
+  bottom: calc(var(--base-height) * -1);
+  transform: rotateY(0.7turn) translateZ(var(--d)) rotateX(307deg);
+}
+
+.d20 > *:nth-child(2) {
+  transform: rotateY(0.6turn) translateZ(var(--d)) rotateX(11deg);
+}
+.d20 > *:nth-child(19) {
+  bottom: calc(var(--base-height) * -1);
+  transform: rotateY(0.6turn) translateZ(calc(var(--d) * -1)) rotateX(191deg);
+}
+
+.d20 > *:nth-child(3) {
+  bottom: calc(var(--base-height) * -1);
+  transform: rotateY(1turn) translateZ(calc(var(--d) * -1)) rotateX(191deg);
+}
+.d20 > *:nth-child(18) {
+  transform: rotateY(1turn) translateZ(var(--d)) rotateX(11deg);
+}
+
+.d20 > *:nth-child(4) {
+  transform: rotateY(0.3turn) translateZ(calc(var(--d) * -1)) rotateX(127deg);
+}
+.d20 > *:nth-child(17) {
+  bottom: calc(var(--base-height) * -1);
+  transform: rotateY(0.3turn) translateZ(var(--d)) rotateX(307deg);
+}
+
+.d20 > *:nth-child(5) {
+  transform: rotateY(0.8turn) translateZ(var(--d)) rotateX(11deg);
+}
+.d20 > *:nth-child(16) {
+  bottom: calc(var(--base-height) * -1);
+  transform: rotateY(0.8turn) translateZ(calc(var(--d) * -1)) rotateX(191deg);
+}
+
+.d20 > *:nth-child(6) {
+  transform: rotateY(0.9turn) translateZ(calc(var(--d) * -1)) rotateX(127deg);
+}
+.d20 > *:nth-child(15) {
+  bottom: calc(var(--base-height) * -1);
+  transform: rotateY(0.9turn) translateZ(var(--d)) rotateX(307deg);
+}
+
+.d20 > *:nth-child(7) {
+  bottom: calc(var(--base-height) * -1);
+  transform: rotateY(0.2turn) translateZ(calc(var(--d) * -1)) rotateX(191deg);
+}
+.d20 > *:nth-child(14) {
+  transform: rotateY(0.2turn) translateZ(var(--d)) rotateX(11deg);
+}
+
+.d20 > *:nth-child(8) {
+  transform: rotateY(0.1turn) translateZ(calc(var(--d) * -1)) rotateX(127deg);
+}
+.d20 > *:nth-child(13) {
+  bottom: calc(var(--base-height) * -1);
+  transform: rotateY(0.1turn) translateZ(var(--d)) rotateX(307deg);
+}
+
+.d20 > *:nth-child(9) {
+  transform: rotateY(0.4turn) translateZ(var(--d)) rotateX(11deg);
+}
+.d20 > *:nth-child(12) {
+  bottom: calc(var(--base-height) * -1);
+  transform: rotateY(0.4turn) translateZ(calc(var(--d) * -1)) rotateX(191deg);
+}
+
+.d20 > *:nth-child(10) {
+  transform: rotateY(.5turn) translateZ(calc(var(--d) * -1)) rotateX(127deg);
+}
+.d20 > *:nth-child(11) {
+  bottom: calc(var(--base-height) * -1);
+  transform: rotateY(.5turn) translateZ(var(--d)) rotateX(307deg);
+}
+
+
+@keyframes rotate {
+  from {
+    transform: rotateX(0deg) rotateY(360deg) rotateZ(360deg);
+  }
+  to {
+    transform: rotateX(360deg) rotateY(0deg) rotateZ(-360deg);
+  }
+}
+
+/* Start https://www.cursors-4u.com */
+* {
+  cursor: url(https://cur.cursors-4u.net/sports/spo-1/spo15.cur), auto !important;
+} /* End https://www.cursors-4u.com */

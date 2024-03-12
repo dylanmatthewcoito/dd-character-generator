@@ -36,6 +36,7 @@ const startApolloServer = async () => {
   app.use(express.urlencoded({ extended: true }));
   app.use(express.json());
   app.use('/graphql', expressMiddleware(server));
+  app.use('/images', express.static(path.join(__dirname, 'public/images')));
 
   // Route to create a checkout session (handles payment on Stripe's servers)
   app.post('/api/checkout-session', async (req, res) => {

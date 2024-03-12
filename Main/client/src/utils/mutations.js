@@ -1,6 +1,6 @@
 // client/src/utils/mutations.js
-import React from 'react';
-import {useMutation, gql } from '@apollo/client';
+import React from "react";
+import { useMutation, gql } from "@apollo/client";
 
 export const LOGIN_USER = gql`
   mutation login($email: String!, $password: String!) {
@@ -11,8 +11,8 @@ export const LOGIN_USER = gql`
         username
       }
     }
-  }`
-;
+  }
+`;
 
 export const SIGNUP_USER = gql`
   mutation createUser($username: String!, $email: String!, $password: String!) {
@@ -21,25 +21,28 @@ export const SIGNUP_USER = gql`
       username
       email
     }
-  }`
-;
+  }
+`;
 
 const CREATE_CHARACTER = gql`
-mutation CreateCharacter($username: String!, $characterInput: CharacterInput!) {
-  createCharacter(username: $username, characterInput: $characterInput) {
-    name
-    charClass
-    race
-    backstory
-    image
-    stat {
-      charisma
-      constitution
-      dexterity
-      intelligence
-      strength
-      wisdom
+  mutation CreateCharacter(
+    $username: String!
+    $characterInput: CharacterInput!
+  ) {
+    createCharacter(username: $username, characterInput: $characterInput) {
+      name
+      charClass
+      race
+      backstory
+      image
+      stat {
+        charisma
+        constitution
+        dexterity
+        intelligence
+        strength
+        wisdom
+      }
     }
   }
-}
 `;
