@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import DonationForm from '../components/DonationForm';
-import { loadStripe } from '@stripe/stripe-js';
 
 const DonationPage = () => {
   // useEffect(() => {

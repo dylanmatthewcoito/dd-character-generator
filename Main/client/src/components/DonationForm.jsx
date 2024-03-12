@@ -1,5 +1,4 @@
 import React from 'react';
-// import { loadStripe } from '@stripe/stripe-js';
 
 const DonationForm = ({ handleDonate }) => {
   const handleSubmit = async (e) => {
@@ -9,7 +8,6 @@ const DonationForm = ({ handleDonate }) => {
 
   return (
     <div>
-      {/* <button onClick={handleDonate}>Donate</button> */}
       <form onSubmit={handleSubmit}>
         <button type="submit">Checkout</button>
       </form>
