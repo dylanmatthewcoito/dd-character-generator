@@ -127,7 +127,7 @@ const PromptPage = ({ onSubmit }) => {
     <div>
       {Auth.loggedIn() ? (
         <>
-          <div className="body-background pt-5">
+          <div className="body-background pt-4">
             {isLoading ? (
               <div
                 className="d-flex justify-content-center align-items-center"
@@ -143,6 +143,7 @@ const PromptPage = ({ onSubmit }) => {
             ) : (
               <form onSubmit={handleSubmit} className="container pb-5">
                 <div className="mb-1">
+                  <h1 className="mb-3 thick">Create a Character</h1>
                   <label htmlFor="name" className="form-label">
                     Name:
                   </label>
@@ -248,7 +249,7 @@ const PromptPage = ({ onSubmit }) => {
           <div class="row justify-content-center">
             <div class="col-md-6 text-center">
               <p className="mt-5 fs-2">
-               You are not logged in! Please Log in to create a character!
+                You are not logged in! Please Log in to create a character!
               </p>
               <button
                 className="btn btn-dark mt-3"

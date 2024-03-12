@@ -93,17 +93,9 @@ body {
   border-radius: 4px;
 }
 
-.character-card,
-.p {
-  margin: 5px 0;
-  font-size: 1.2rem; /* Increase the font size */
-  font-weight: bold; /* Make the text bold */
-}
 
 .stats p {
-  margin: 5px 0;
-  font-size: 1.2rem; /* Increase the font size */
-  font-weight: bold; /* Make the text bold */
+  margin: 1px 0;
 }
 
 .userProfileContainer {
@@ -185,6 +177,10 @@ body {
 
 .nav-item a {
   font-size: 1.5rem;
+}
+
+.thick {
+  font-weight: 700;
 }
 
 .loader {

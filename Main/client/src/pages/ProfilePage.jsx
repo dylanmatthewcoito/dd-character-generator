@@ -7,7 +7,7 @@ const renderHomeButton = () => (
     <div className="row justify-content-center" >
       <div class="col-md-6 text-center"> 
         <p className="mt-5 fs-2">
-          You are not logged in! Please Log In to view your characters!
+          You are not logged in please Log In to view your characters!
         </p>
         <button
           className="btn btn-dark mt-3"
@@ -37,14 +37,14 @@ function ProfilePageComponent() {
 
   return (
     <div>
-      <div className="body-background pb-5 m-5">
+      <div className="body-background mt-4">
         <div className="userProfileContainer">
-          <h2 className="userProfileName">{storedUsername}'s Characters</h2>
+          <h2 className="userProfileName m-0">{storedUsername}'s Characters</h2>
         </div>
         <div className="character-cards">
           {data?.getUserCharacters.map(
             ({ _id, name, charClass, race, backstory, image, stat }) => (
-              <div key={_id} className="character-card">
+              <div key={_id} className="character-card mb-5">
                 <img src={image} alt={`${name}`} />
                 <h3 className="profile-character-name mt-3">{name}</h3>
                 <p>
@@ -58,27 +58,27 @@ function ProfilePageComponent() {
                 </p>
                 <div className="stats">
                   <p>
-                    <span className="profile-stats b">Strength:</span>{" "}
-                    {stat.strength}
-                  </p>
-                  <p>
-                    <span className="profile-stats">Dexterity:</span>{" "}
-                    {stat.dexterity}
+                    <span className="profile-stats">Charisma:</span>{" "}
+                    {stat.charisma}
                   </p>
                   <p>
                     <span className="profile-stats">Constitution:</span>{" "}
                     {stat.constitution}
                   </p>
                   <p>
+                    <span className="profile-stats">Dexterity:</span>{" "}
+                    {stat.dexterity}
+                  </p>
+                  <p>
                     <span className="profile-stats">Intelligence:</span>{" "}
                     {stat.intelligence}
                   </p>
                   <p>
-                    <span className="profile-stats">Wisdom:</span> {stat.wisdom}
+                    <span className="profile-stats b">Strength:</span>{" "}
+                    {stat.strength}
                   </p>
                   <p>
-                    <span className="profile-stats">Charisma:</span>{" "}
-                    {stat.charisma}
+                    <span className="profile-stats">Wisdom:</span> {stat.wisdom}
                   </p>
                 </div>
               </div>
