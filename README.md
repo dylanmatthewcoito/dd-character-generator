@@ -6,7 +6,7 @@ Roles & Renders is a Dungeons & Dragons themed character image generator! Maybe 
 
 ## Visit the Website
 
-https://dnd-generator-aorl.onrender.com
+put your own deployed render url here
 
 
 
@@ -15,9 +15,9 @@ https://dnd-generator-aorl.onrender.com
 - [Visit The Website](#visit-the-website)
 - [About The Project](#about-the-project)
 - [Technologies](#technologies)
-- [Installation](#installation)
-- [Usage](#usage)
 - [Features](#features)
+- [Installation](#installation)
+- [Screenshots](#sreenshots)
 - [Credits](#credits)
 
 ## About The Project
