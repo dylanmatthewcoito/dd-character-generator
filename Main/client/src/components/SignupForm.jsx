@@ -25,7 +25,6 @@ const SignupForm = () => {
         variables: { username, email, password },
       });
 
-      console.log("User created:", data.createUser);
       setSuccessMessage(
         "User created successfully! Please return to Log In to continue!"
       );
@@ -43,7 +42,6 @@ const SignupForm = () => {
       if (error.message.includes("E11000")) {
         setCustomError("Email already exists");
       } else {
-        console.error("Error creating user:", error.message);
         setCustomError(error.message); // Fallback to generic error message
       }
     }

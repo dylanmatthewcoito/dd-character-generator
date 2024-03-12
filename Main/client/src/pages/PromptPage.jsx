@@ -98,14 +98,10 @@ const PromptPage = ({ onSubmit }) => {
       const createdCharacter = data.createCharacter;
       setImageUrl(imageUrl);
 
-      console.log({ state: { name, race, charClass, backstory, stat } });
-      // Handle the response as needed
-      console.log("Created Character:", createdCharacter);
-
       // Navigate to CharSheetPage with the created character data
       navigate("/app/charsheet", { state: { ...createdCharacter } });
     } catch (error) {
-      console.error("Error creating character:", error);
+
     }
   };
 

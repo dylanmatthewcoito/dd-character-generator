@@ -6,7 +6,6 @@ const CharSheetPage = () => {
 
   const { image, name, race, charClass, backstory, stat } =
     location.state || {};
-  console.log(location.state);
 
   return (
     <div className="body-background">
