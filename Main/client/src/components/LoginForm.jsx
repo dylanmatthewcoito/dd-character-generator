@@ -21,13 +21,8 @@ function LoginForm({ onLoginSuccess }) {
       });
 
       Auth.login(data.login.token);
-      console.log("User logged in:", data);
 
-      // Store the token in localStorage or useContext to update global state
-      //  localStorage.setItem('token', data.login.token);
       localStorage.setItem("username", data.login.user.username);
-      // If using AuthContext
-      // authContext.login(data.login.token);
 
       // Reset form fields
       setEmail("");
@@ -38,7 +33,6 @@ function LoginForm({ onLoginSuccess }) {
         onLoginSuccess();
       }
     } catch (error) {
-      console.error("Error logging in:", error.message);
       // Optionally update state to show error to the user
     }
   };
