@@ -17,6 +17,7 @@ body {
   background-repeat: no-repeat; /* Do not repeat the image */
   background-attachment: fixed; /* Fix the background image's position */
   background-size: cover; /* Cover the entire area */
+  -webkit-overflow-scrolling: touch;
 }
 
 .navbar {
