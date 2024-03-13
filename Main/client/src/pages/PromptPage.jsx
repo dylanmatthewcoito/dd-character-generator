@@ -139,7 +139,7 @@ const PromptPage = ({ onSubmit }) => {
             ) : (
               <form onSubmit={handleSubmit} className="container pb-5">
                 <div className="mb-1">
-                  <h1 className="mb-3 thick">Create a Character</h1>
+                  <h1 className="mb-3 thick blood">Create a Character</h1>
                   <label htmlFor="name" className="form-label">
                     Name:
                   </label>
